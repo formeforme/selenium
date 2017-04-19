@@ -38,7 +38,6 @@ public class HBBusinessPageTest {
         addEditHBBusinessPage = new AddEditHBBusinessPage(webDriver);
         Assert.assertTrue(isElementPresent(loginPage.loginButton));
         loginPage.login("admin","789456");
-        Assert.assertTrue(isElementPresent(homePage.logoutButton));
     }
     @AfterTest
     private void finish(){
@@ -53,7 +52,7 @@ public class HBBusinessPageTest {
         Assert.assertTrue(isElementPresent(hbBusinessPage.addButton));
     }
     private boolean isElementPresent(WebElement element){
-        WebDriverWait wait = new WebDriverWait(webDriver,20);
+        WebDriverWait wait = new WebDriverWait(webDriver,30);
         try{
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;
@@ -62,6 +61,7 @@ public class HBBusinessPageTest {
             return false;
         }
     }
+
     @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
     private void validateSearchWorks(HBBusiness hbBusiness){
         Assert.assertTrue(isElementPresent(hbBusinessPage.searchField));
@@ -79,11 +79,8 @@ public class HBBusinessPageTest {
     @Test
     private void validateOpenWorks(){
         Assert.assertTrue(isElementPresent(hbBusinessPage.items.get(0)));
-        String name = hbBusinessPage.items.get(0).getText();
         hbBusinessPage.items.get(0).click();
         Assert.assertTrue(isElementPresent(categoryPage.nameField));
-        Assert.assertEquals(categoryPage.getName(),name);
-        Assert.assertEquals(categoryPage.imageField.size(),1);
     }
     @Test(priority = 1, dataProvider = "PTData",
             dataProviderClass = HBBusinessPageData.class)
@@ -125,23 +122,19 @@ public class HBBusinessPageTest {
         Assert.assertTrue(isElementPresent(addEditHBBusinessPage.saveButton));
     }
     @Test
-    private void validateEditPageOpened(){
-        validateOpenWorks();
-        String name = categoryPage.getName();
+    private void validateEditWorks(){}
+    @Test
+    private void validateRightEditPageOpened(){
+        Assert.assertTrue(isElementPresent(hbBusinessPage.items.get(0)));
+        String name = hbBusinessPage.items.get(0).getText();
+        hbBusinessPage.items.get(0).click();
+        Assert.assertTrue(isElementPresent(categoryPage.nameField));
+        Assert.assertEquals(categoryPage.getName(),name);
+        Assert.assertEquals(categoryPage.imageField.size(),1);
         Assert.assertTrue(isElementPresent(categoryPage.editButton));
         categoryPage.editButton.click();
         Assert.assertTrue(isElementPresent(addEditHBBusinessPage.nameField));
-        Assert.assertEquals(addEditHBBusinessPage.nameField.getAttribute("value"),name);
-        Assert.assertEquals(addEditHBBusinessPage.imageField.size(),1);
-    }
-   // @Test
-    private void validateEditWorks(){
-        validateEditPageOpened();
-        String newName = "alsfoek";
-        addEditHBBusinessPage.nameField.clear();
-        addEditHBBusinessPage.nameField.sendKeys(newName);
-        Assert.assertTrue(isElementPresent(addEditHBBusinessPage.saveButton));
-        addEditHBBusinessPage.save();
-        Assert.assertTrue(isElementPresent(hbBusinessPage.items.get(0)));
+        Assert.assertEquals(addEditHBBusinessPage.nameField.getText(),name);
+        Assert.assertEquals(addEditHBBusinessPage.imageField);
     }
 }

@@ -10,11 +10,6 @@ public class SubCategory {
     private List<String> images = null;//TODO
     private boolean isShown;
 
-    public SubCategory(String name, List<String> images, boolean isShown){
-        this.name = name;
-        this.images = images;
-        this.isShown = isShown;
-    }
     public String getName() {
         return name;
     }

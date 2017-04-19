@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="15" passed="15">
+<testng-results skipped="0" failed="0" ignored="0" total="14" passed="14">
   <reporter-output>
   </reporter-output>
-  <suite name="QE ACA First Suite" duration-ms="81363" started-at="2017-04-18T06:58:34Z" finished-at="2017-04-18T06:59:55Z">
+  <suite name="QE ACA First Suite" duration-ms="87135" started-at="2017-04-17T19:05:53Z" finished-at="2017-04-17T19:07:20Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="17443" started-at="2017-04-18T06:58:34Z" finished-at="2017-04-18T06:58:51Z">
+    <test name="Test" duration-ms="23809" started-at="2017-04-17T19:05:53Z" finished-at="2017-04-17T19:06:17Z">
       <class name="Test.LoginTest.LoginPageTest">
-        <test-method status="PASS" signature="start()[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="start" is-config="true" duration-ms="6717" started-at="2017-04-18T10:58:34Z" finished-at="2017-04-18T10:58:40Z">
+        <test-method status="PASS" signature="start()[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="start" is-config="true" duration-ms="12110" started-at="2017-04-17T23:05:53Z" finished-at="2017-04-17T23:06:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- start -->
-        <test-method status="PASS" signature="initializeMembers()[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="initializeMembers" is-config="true" duration-ms="37" started-at="2017-04-18T10:58:40Z" finished-at="2017-04-18T10:58:41Z">
+        <test-method status="PASS" signature="initializeMembers()[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="initializeMembers" is-config="true" duration-ms="54" started-at="2017-04-17T23:06:05Z" finished-at="2017-04-17T23:06:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeMembers -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="beforeMethod" is-config="true" duration-ms="761" started-at="2017-04-18T10:58:41Z" finished-at="2017-04-18T10:58:41Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="beforeMethod" is-config="true" duration-ms="899" started-at="2017-04-17T23:06:06Z" finished-at="2017-04-17T23:06:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateFieldCheckIsDone(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="validateFieldCheckIsDone" duration-ms="706" started-at="2017-04-18T10:58:41Z" data-provider="NTData" finished-at="2017-04-18T10:58:42Z">
+        <test-method status="PASS" signature="validateFieldCheckIsDone(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="validateFieldCheckIsDone" duration-ms="1126" started-at="2017-04-17T23:06:06Z" data-provider="NTData" finished-at="2017-04-17T23:06:08Z">
           <params>
             <param index="0">
               <value>
@@ -35,11 +35,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateFieldCheckIsDone -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="beforeMethod" is-config="true" duration-ms="741" started-at="2017-04-18T10:58:42Z" finished-at="2017-04-18T10:58:43Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="beforeMethod" is-config="true" duration-ms="881" started-at="2017-04-17T23:06:08Z" finished-at="2017-04-17T23:06:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateFieldCheckIsDone(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="validateFieldCheckIsDone" duration-ms="1105" started-at="2017-04-18T10:58:43Z" data-provider="NTData" finished-at="2017-04-18T10:58:44Z">
+        <test-method status="PASS" signature="validateFieldCheckIsDone(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="validateFieldCheckIsDone" duration-ms="2066" started-at="2017-04-17T23:06:08Z" data-provider="NTData" finished-at="2017-04-17T23:06:10Z">
           <params>
             <param index="0">
               <value>
@@ -55,11 +55,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateFieldCheckIsDone -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="beforeMethod" is-config="true" duration-ms="645" started-at="2017-04-18T10:58:44Z" finished-at="2017-04-18T10:58:44Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="beforeMethod" is-config="true" duration-ms="822" started-at="2017-04-17T23:06:10Z" finished-at="2017-04-17T23:06:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateFieldCheckIsDone(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="validateFieldCheckIsDone" duration-ms="380" started-at="2017-04-18T10:58:44Z" data-provider="NTData" finished-at="2017-04-18T10:58:45Z">
+        <test-method status="PASS" signature="validateFieldCheckIsDone(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="validateFieldCheckIsDone" duration-ms="650" started-at="2017-04-17T23:06:11Z" data-provider="NTData" finished-at="2017-04-17T23:06:12Z">
           <params>
             <param index="0">
               <value>
@@ -75,11 +75,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateFieldCheckIsDone -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="beforeMethod" is-config="true" duration-ms="832" started-at="2017-04-18T10:58:45Z" finished-at="2017-04-18T10:58:46Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="beforeMethod" is-config="true" duration-ms="842" started-at="2017-04-17T23:06:12Z" finished-at="2017-04-17T23:06:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateFieldCheckIsDone(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="validateFieldCheckIsDone" duration-ms="792" started-at="2017-04-18T10:58:46Z" data-provider="NTData" finished-at="2017-04-18T10:58:46Z">
+        <test-method status="PASS" signature="validateFieldCheckIsDone(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="validateFieldCheckIsDone" duration-ms="609" started-at="2017-04-17T23:06:13Z" data-provider="NTData" finished-at="2017-04-17T23:06:13Z">
           <params>
             <param index="0">
               <value>
@@ -95,11 +95,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateFieldCheckIsDone -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="beforeMethod" is-config="true" duration-ms="934" started-at="2017-04-18T10:58:47Z" finished-at="2017-04-18T10:58:47Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="beforeMethod" is-config="true" duration-ms="850" started-at="2017-04-17T23:06:13Z" finished-at="2017-04-17T23:06:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateLoginWorks(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="validateLoginWorks" duration-ms="2888" started-at="2017-04-18T10:58:47Z" data-provider="PTData" finished-at="2017-04-18T10:58:50Z">
+        <test-method status="PASS" signature="validateLoginWorks(java.lang.String, java.lang.String)[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="validateLoginWorks" duration-ms="1911" started-at="2017-04-17T23:06:14Z" data-provider="PTData" finished-at="2017-04-17T23:06:16Z">
           <params>
             <param index="0">
               <value>
@@ -115,155 +115,147 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateLoginWorks -->
-        <test-method status="PASS" signature="finish()[pri:0, instance:Test.LoginTest.LoginPageTest@4e04a765]" name="finish" is-config="true" duration-ms="866" started-at="2017-04-18T10:58:50Z" finished-at="2017-04-18T10:58:51Z">
+        <test-method status="PASS" signature="finish()[pri:0, instance:Test.LoginTest.LoginPageTest@6fb554cc]" name="finish" is-config="true" duration-ms="952" started-at="2017-04-17T23:06:16Z" finished-at="2017-04-17T23:06:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- finish -->
       </class> <!-- Test.LoginTest.LoginPageTest -->
     </test> <!-- Test -->
-    <test name="Test2" duration-ms="63873" started-at="2017-04-18T06:58:51Z" finished-at="2017-04-18T06:59:55Z">
+    <test name="Test2" duration-ms="63260" started-at="2017-04-17T19:06:17Z" finished-at="2017-04-17T19:07:20Z">
       <class name="Test.HBBusinessTest.HBBusinessPageTest">
-        <test-method status="PASS" signature="start()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="start" is-config="true" duration-ms="7804" started-at="2017-04-18T10:58:51Z" finished-at="2017-04-18T10:58:59Z">
+        <test-method status="PASS" signature="start()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="start" is-config="true" duration-ms="11098" started-at="2017-04-17T23:06:17Z" finished-at="2017-04-17T23:06:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- start -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="1052" started-at="2017-04-18T10:58:59Z" finished-at="2017-04-18T10:59:00Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="beforeMethod" is-config="true" duration-ms="1860" started-at="2017-04-17T23:06:28Z" finished-at="2017-04-17T23:06:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateAddWorks(Pages.HBBusiness.HBBusiness)[pri:-1, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateAddWorks" duration-ms="7084" started-at="2017-04-18T10:59:00Z" data-provider="PTData" finished-at="2017-04-18T10:59:07Z">
+        <test-method status="PASS" signature="validateAddWorks(Pages.HBBusiness.HBBusiness)[pri:-1, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="validateAddWorks" duration-ms="8197" started-at="2017-04-17T23:06:30Z" data-provider="PTData" finished-at="2017-04-17T23:06:38Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Pages.HBBusiness.HBBusiness@64b73e7a]]>
+                <![CDATA[Pages.HBBusiness.HBBusiness@1b835480]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateAddWorks -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="1565" started-at="2017-04-18T10:59:07Z" finished-at="2017-04-18T10:59:09Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="beforeMethod" is-config="true" duration-ms="1322" started-at="2017-04-17T23:06:38Z" finished-at="2017-04-17T23:06:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateEditPageOpened()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateEditPageOpened" duration-ms="6177" started-at="2017-04-18T10:59:09Z" finished-at="2017-04-18T10:59:15Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateEditPageOpened -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="1328" started-at="2017-04-18T10:59:15Z" finished-at="2017-04-18T10:59:16Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateNoWrongInputsAdd(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateNoWrongInputsAdd" duration-ms="4852" started-at="2017-04-18T10:59:16Z" data-provider="NTData" finished-at="2017-04-18T10:59:21Z">
+        <test-method status="PASS" signature="validateNoWrongInputsAdd(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="validateNoWrongInputsAdd" duration-ms="5230" started-at="2017-04-17T23:06:40Z" data-provider="NTData" finished-at="2017-04-17T23:06:45Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Pages.HBBusiness.HBBusiness@2df6226d]]>
+                <![CDATA[Pages.HBBusiness.HBBusiness@4f25b795]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateNoWrongInputsAdd -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="1592" started-at="2017-04-18T10:59:21Z" finished-at="2017-04-18T10:59:23Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="beforeMethod" is-config="true" duration-ms="1291" started-at="2017-04-17T23:06:45Z" finished-at="2017-04-17T23:06:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateNoWrongInputsAdd(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateNoWrongInputsAdd" duration-ms="4917" started-at="2017-04-18T10:59:23Z" data-provider="NTData" finished-at="2017-04-18T10:59:28Z">
+        <test-method status="PASS" signature="validateNoWrongInputsAdd(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="validateNoWrongInputsAdd" duration-ms="5247" started-at="2017-04-17T23:06:46Z" data-provider="NTData" finished-at="2017-04-17T23:06:51Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Pages.HBBusiness.HBBusiness@12ed9db6]]>
+                <![CDATA[Pages.HBBusiness.HBBusiness@6fb365ed]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateNoWrongInputsAdd -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="1634" started-at="2017-04-18T10:59:28Z" finished-at="2017-04-18T10:59:29Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="beforeMethod" is-config="true" duration-ms="1469" started-at="2017-04-17T23:06:51Z" finished-at="2017-04-17T23:06:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateNoWrongInputsAdd(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateNoWrongInputsAdd" duration-ms="4493" started-at="2017-04-18T10:59:29Z" data-provider="NTData" finished-at="2017-04-18T10:59:34Z">
+        <test-method status="PASS" signature="validateNoWrongInputsAdd(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="validateNoWrongInputsAdd" duration-ms="5559" started-at="2017-04-17T23:06:53Z" data-provider="NTData" finished-at="2017-04-17T23:06:58Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Pages.HBBusiness.HBBusiness@4ff4357f]]>
+                <![CDATA[Pages.HBBusiness.HBBusiness@6e950bcf]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateNoWrongInputsAdd -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="1476" started-at="2017-04-18T10:59:34Z" finished-at="2017-04-18T10:59:35Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="beforeMethod" is-config="true" duration-ms="1380" started-at="2017-04-17T23:06:58Z" finished-at="2017-04-17T23:07:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateNoWrongInputsAdd(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateNoWrongInputsAdd" duration-ms="4903" started-at="2017-04-18T10:59:35Z" data-provider="NTData" finished-at="2017-04-18T10:59:40Z">
+        <test-method status="PASS" signature="validateNoWrongInputsAdd(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="validateNoWrongInputsAdd" duration-ms="5027" started-at="2017-04-17T23:07:00Z" data-provider="NTData" finished-at="2017-04-17T23:07:05Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Pages.HBBusiness.HBBusiness@49cb9cb5]]>
+                <![CDATA[Pages.HBBusiness.HBBusiness@16414e40]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateNoWrongInputsAdd -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="2030" started-at="2017-04-18T10:59:40Z" finished-at="2017-04-18T10:59:42Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="beforeMethod" is-config="true" duration-ms="1411" started-at="2017-04-17T23:07:05Z" finished-at="2017-04-17T23:07:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateOpenWorks()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateOpenWorks" duration-ms="2285" started-at="2017-04-18T10:59:42Z" finished-at="2017-04-18T10:59:44Z">
+        <test-method status="PASS" signature="validateOpenWorks()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="validateOpenWorks" duration-ms="2436" started-at="2017-04-17T23:07:06Z" finished-at="2017-04-17T23:07:09Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateOpenWorks -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="1457" started-at="2017-04-18T10:59:44Z" finished-at="2017-04-18T10:59:46Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="beforeMethod" is-config="true" duration-ms="1662" started-at="2017-04-17T23:07:09Z" finished-at="2017-04-17T23:07:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateRightPageOpened(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateRightPageOpened" duration-ms="1488" started-at="2017-04-18T10:59:46Z" data-provider="PTData" finished-at="2017-04-18T10:59:47Z">
+        <test-method status="PASS" signature="validateRightPageOpened(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="validateRightPageOpened" duration-ms="1686" started-at="2017-04-17T23:07:10Z" data-provider="PTData" finished-at="2017-04-17T23:07:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Pages.HBBusiness.HBBusiness@55322aab]]>
+                <![CDATA[Pages.HBBusiness.HBBusiness@74bada02]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateRightPageOpened -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="1972" started-at="2017-04-18T10:59:47Z" finished-at="2017-04-18T10:59:49Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="beforeMethod" is-config="true" duration-ms="1219" started-at="2017-04-17T23:07:12Z" finished-at="2017-04-17T23:07:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateSearchWorks(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateSearchWorks" duration-ms="1037" started-at="2017-04-18T10:59:49Z" data-provider="PTData" finished-at="2017-04-18T10:59:50Z">
+        <test-method status="PASS" signature="validateSearchWorks(Pages.HBBusiness.HBBusiness)[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="validateSearchWorks" duration-ms="1217" started-at="2017-04-17T23:07:13Z" data-provider="PTData" finished-at="2017-04-17T23:07:15Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Pages.HBBusiness.HBBusiness@2b4c1d96]]>
+                <![CDATA[Pages.HBBusiness.HBBusiness@525575]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateSearchWorks -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="beforeMethod" is-config="true" duration-ms="1423" started-at="2017-04-18T10:59:50Z" finished-at="2017-04-18T10:59:52Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="beforeMethod" is-config="true" duration-ms="1889" started-at="2017-04-17T23:07:15Z" finished-at="2017-04-17T23:07:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validateDeleteWorks(Pages.HBBusiness.HBBusiness)[pri:1, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="validateDeleteWorks" duration-ms="3215" started-at="2017-04-18T10:59:52Z" data-provider="PTData" finished-at="2017-04-18T10:59:55Z">
+        <test-method status="PASS" signature="validateDeleteWorks(Pages.HBBusiness.HBBusiness)[pri:1, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="validateDeleteWorks" duration-ms="3946" started-at="2017-04-17T23:07:16Z" data-provider="PTData" finished-at="2017-04-17T23:07:20Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Pages.HBBusiness.HBBusiness@530712d]]>
+                <![CDATA[Pages.HBBusiness.HBBusiness@3549bca9]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateDeleteWorks -->
-        <test-method status="PASS" signature="finish()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@6615435c]" name="finish" is-config="true" duration-ms="79" started-at="2017-04-18T10:59:55Z" finished-at="2017-04-18T10:59:55Z">
+        <test-method status="PASS" signature="finish()[pri:0, instance:Test.HBBusinessTest.HBBusinessPageTest@3551a94]" name="finish" is-config="true" duration-ms="101" started-at="2017-04-17T23:07:20Z" finished-at="2017-04-17T23:07:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- finish -->

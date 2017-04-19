@@ -13,13 +13,13 @@ import java.util.List;
  * Created by liana on 4/12/17.
  */
 public class CategoriesPage {
-    @FindBy(how = How.XPATH, using = CategoriesPageXPath.CREATE_BUTTON)
+    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[1]/a/button")
     public WebElement createButton;
-    @FindBy(how = How.XPATH, using = CategoriesPageXPath.SEARCH_FIELD)
+    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[3]/form/div[2]/input")
     public WebElement searchField;
-    @FindBy(how = How.XPATH, using = CategoriesPageXPath.SEARCH_BUTTON)
+    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[3]/form/div[2]/span/button")
     public WebElement searchButton;
-    @FindBy(how = How.XPATH, using = CategoriesPageXPath.CATEGORIES)
+    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[3]/table/tbody/tr")
     public List<WebElement> categories;
 
     public CategoriesPage(WebDriver webDriver){

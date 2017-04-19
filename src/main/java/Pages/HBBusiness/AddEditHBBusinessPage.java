@@ -19,7 +19,7 @@ public class AddEditHBBusinessPage {
     @FindBy(how = How.XPATH, using = AddEditHBBusinessPageXPath.NAME_FIELD)
     public WebElement nameField;
     @FindBy(how = How.XPATH, using = AddEditHBBusinessPageXPath.IMAGE_FIELD)
-    public List<WebElement> imageField;
+    public WebElement imageField;
     @FindBy(how = How.XPATH, using = AddEditHBBusinessPageXPath.SAVE_BUTTON)
     public WebElement saveButton;
 
@@ -36,7 +36,7 @@ public class AddEditHBBusinessPage {
     public void setImage(String image/*List<String> images*/) {
         //for(String image : images){
             File file = new File(System.getProperty("user.dir"), image);
-            imageField.get(0).click();
+            imageField.click();
             uploadFile(file.getAbsolutePath());
         //}
     }
@@ -47,6 +47,7 @@ public class AddEditHBBusinessPage {
         StringSelection stringSelection = new StringSelection(string);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
     }
+
     private void uploadFile(String fileLocation) {
         try {
             setClipboardData(fileLocation);
@@ -59,8 +60,6 @@ public class AddEditHBBusinessPage {
             robot.keyRelease(KeyEvent.VK_ENTER);
         } catch (Exception exp) {
             exp.printStackTrace();
-        } finally {
-
         }
     }
 }

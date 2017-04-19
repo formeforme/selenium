@@ -3,7 +3,6 @@ package Test.CategoriesTest;
 import Pages.Categories.AddEditCategoryPage;
 import Pages.Categories.Category;
 import Pages.Categories.CategoriesPage;
-import Pages.Categories.CategoryPage;
 import Pages.HomePage;
 import Pages.Login.LoginPage;
 import WebDriverSupport.WebDriverBase;
@@ -22,38 +21,57 @@ import java.util.List;
  * Created by liana on 4/12/17.
  */
 public class CategoriesPageTest {
+    private String URL;
     private WebDriverBase webDriverBase = WebDriverBase.getDriverInstance();
-    private WebDriver webDriver;
-    private HomePage homePage;
-    private LoginPage loginPage;
-    private CategoryPage categoryPage;
-    private CategoriesPage categoriesPage;
+    private WebDriver webDriver;// = webDriverBase.getWebDriver();
+    private HomePage homePage;// = new HomePage(webDriver);
+    private LoginPage loginPage;// = new Login(webDriver);
+    private CategoriesPage categoriesPage;// = new CategoriesPage(webDriver);
     private AddEditCategoryPage addEditCategoryPage;// = new AddEditCategoryPage(webDriver);
 
     @BeforeTest
     private void start(){
-        webDriverBase = WebDriverBase.getDriverInstance();
         webDriverBase.start();
+    }
+    @AfterTest
+    private void finish(){
+         webDriverBase.close();
+    }
+    @BeforeClass
+    private void initializeMembers(){
         webDriver = webDriverBase.getWebDriver();
         homePage = new HomePage(webDriver);
         loginPage = new LoginPage(webDriver);
         categoriesPage = new CategoriesPage(webDriver);
         addEditCategoryPage = new AddEditCategoryPage(webDriver);
-        Assert.assertTrue(isElementPresent(loginPage.loginButton));
-        loginPage.login("admin","789456");
-        Assert.assertTrue(isElementPresent(homePage.logoutButton));
-    }
-    @AfterTest
-    private void finish(){
-        webDriverBase.close();
+        Assert.assertTrue(loginPage.isVisible());
+        loginPage.login("admin", "789456");
+        Assert.assertTrue(homePage.isVisible());
+        openPage();
+        URL = webDriver.getCurrentUrl();
+
     }
     @BeforeMethod
     private void beforeMethod(){
-        Assert.assertTrue(isElementPresent(homePage.appManagementMenuButton));
+        webDriver.navigate().to(URL);
+    }
+    private void openPage(){
+        Assert.assertTrue(isElementClickable(homePage.appManagementMenuButton));
         homePage.appManagementMenuButton.click();
-        Assert.assertTrue(isElementPresent(homePage.appManagementSubButtons.get(0)));
+        Assert.assertTrue(isElementClickable(homePage.appManagementSubButtons.get(0)));
         homePage.appManagementSubButtons.get(0).click();
-        Assert.assertTrue(isElementPresent(categoriesPage.createButton));
+        ///Assert.assertTrue(categoriesPage.isVisible());
+        Assert.assertTrue(isElementClickable(categoriesPage.createButton));
+    }
+    private boolean isElementClickable(WebElement element){
+        WebDriverWait wait = new WebDriverWait(webDriver,20);
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            return true;
+        } catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
     private boolean isElementPresent(WebElement element){
         WebDriverWait wait = new WebDriverWait(webDriver,20);
@@ -66,13 +84,23 @@ public class CategoriesPageTest {
         }
     }
 
-    @Test(priority = -1, dataProvider = "PTData_category",
-            dataProviderClass = CategoriesPageData.class)
-    private void validateCreateCategoryWorks(Category category){
-        Assert.assertTrue(isElementPresent(categoriesPage.createButton));
+    private Category getCategory(){
+        String name = "sel_test";
+        List<String> images = new LinkedList<String>();
+        images.add("./image/coffee.jpeg");
+        String type = "OnlineSales";
+        Category category = new Category();
+        category.setName(name);
+        category.setImages(images);
+        category.setType(type);
+        return category;
+    }
+    @Test
+    private void validateCreateWorks(){
+        Assert.assertTrue(isElementClickable(categoriesPage.createButton));
         categoriesPage.createButton.click();
-        Assert.assertTrue(isElementPresent(addEditCategoryPage.saveButton));
-        addEditCategoryPage.fillFields(category);
+        Assert.assertTrue(isElementClickable(addEditCategoryPage.saveButton));
+        addEditCategoryPage.fillFields(getCategory());
         //Assert.assertTrue();
         try {
             Thread.sleep(4000);
@@ -82,43 +110,23 @@ public class CategoriesPageTest {
         Assert.assertEquals(addEditCategoryPage.images.size(),1);
         addEditCategoryPage.save();
     }
-    @Test(dataProvider = "PTData_category", dataProviderClass = CategoriesPageData.class)
-    public void validateSearchWorks(Category category){
+    @Test(priority = 1)
+    public void validateSearchWorks(){
         boolean isFound = false;
         Assert.assertTrue(isElementPresent(categoriesPage.searchButton));
-        categoriesPage.searchCategory(category);
+        categoriesPage.searchCategory(getCategory());
         for(int i = 0; i < categoriesPage.categories.size(); ++i) {
-            if(categoriesPage.categories.get(i).getText().contains(category.getName())){
+            if(categoriesPage.categories.get(i).getText().contains(getCategory().getName())){
                 isFound = true;
             }
         }
         Assert.assertTrue(isFound);
     }
-    @Test(dataProvider = "PTData_category",
-            dataProviderClass = CategoriesPageData.class)
-    public void validateOpenCategoryWorks(Category category){
-        Assert.assertTrue(isElementPresent(categoriesPage.categories.get(0)));
-        String name = categoriesPage.categories.get(0).getText();
-        categoriesPage.categories.get(0).click();
-        Assert.assertTrue(isElementPresent(categoryPage.editCategory));
-        Assert.assertEquals(categoryPage);
-        /*Assert.assertEquals(categoryPage.,name);
-        Assert.assertEquals(categoryPage.imageField.size(),1);
-
-        Assert.assertTrue(isElementPresent(categoriesPage.searchButton));
-        categoriesPage.searchCategory(category);
-        for(int i = 0; i < categoriesPage.categories.size(); ++i) {
-            if(categoriesPage.categories.get(i).getText().contains(category.getName())){
-
-            }
-        }
-        //Assert.assertTrue(isFound);
-        */
-    }
-    @Test(dataProvider = "PTData_category", dataProviderClass = CategoriesPageData.class)
-    public void validateRightCategoryPageWorks(Category category){
-        Assert.assertTrue(isElementPresent(categoriesPage.createButton));
+    @Test(priority = 2)
+    public void validateDeleteWorks(){
+        Assert.assertTrue(isElementClickable(categoriesPage.createButton));
         WebElement deleteButton;
+        Category category = getCategory();
         for(int i = 0; i < categoriesPage.categories.size(); ++i){
             if(categoriesPage.categories.get(i).getText().contains(category.getName())){
                 deleteButton = webDriver.findElement(By.xpath(
@@ -127,12 +135,5 @@ public class CategoriesPageTest {
             }
         }
     }
- /*   @Test(priority = -1, dataProvider = "PTData_subcategory",
-            dataProviderClass = CategoriesPageData.class)
-    private void validateCreateSubCategoryWorks(){
-
-    }
-    */
-
 }
 

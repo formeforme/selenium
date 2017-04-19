@@ -16,17 +16,17 @@ import java.util.List;
  * Created by liana on 4/12/17.
  */
 public class AddEditCategoryPage {
-    @FindBy(how = How.XPATH, using = AddEditCategoryPageXPath.NAME_FIELD)
+    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[1]/div/input")
     public WebElement categoryNameField;
-    @FindBy(how = How.XPATH, using = AddEditCategoryPageXPath.IMAGE_FIELD)
+    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[2]/div/div/div/span")
     public WebElement categoryImageField;
-    @FindBy(how = How.XPATH, using = AddEditCategoryPageXPath.ONLINE_SALES_BUTTON)
+    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[3]/div/label[1]/input")
     public WebElement categoryOnlineSalesButton;
-    @FindBy(how = How.XPATH, using = AddEditCategoryPageXPath.FREE_BUTTON)
+    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[3]/div/label[2]/input")
     public WebElement categoryFreeButton;
-    @FindBy(how = How.XPATH, using = AddEditCategoryPageXPath.SAVE_BUTTON)
+    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[3]/button")
     public WebElement saveButton;
-    @FindBy(how = How.XPATH, using = AddEditCategoryPageXPath.IMAGES)
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'dz-image-preview')]")
     public List<WebElement> images;
 
     public AddEditCategoryPage(WebDriver webDriver){

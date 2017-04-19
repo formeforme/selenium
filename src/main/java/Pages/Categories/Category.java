@@ -10,11 +10,6 @@ public class Category {
     private List<String> images = null;//TODO
     private String type = null;//TODO
 
-    public Category(String name, List<String> images, String type){
-        this.name = name;
-        this.images = images;
-        this.type = type;
-    }
     public String getName() {
         return name;
     }
