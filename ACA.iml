@@ -66,5 +66,7 @@
     <orderEntry type="library" name="Maven: org.testng:testng:6.11" level="project" />
     <orderEntry type="library" name="org.apache.poi:poi:3.15" level="project" />
     <orderEntry type="library" name="net.sourceforge.jexcelapi:jxl:2.6.12" level="project" />
+    <orderEntry type="library" name="org.apache.poi:poi:3.151" level="project" />
+    <orderEntry type="library" name="org.apache.poi:poi-ooxml:3.16" level="project" />
   </component>
 </module>

@@ -29,8 +29,15 @@ public class LoginPageTest extends BaseTest{
         loginPage.login(user);
         assertTrue(loginPage.isVisible());
     }
-    @Test
+   // @Test
     void t(){
-        LoginPageData.parseFile("svg");
+        try {
+            org.apache.log4j.BasicConfigurator.configure();
+            ExcelUtils.setExcelFile("./data/data2.xlsx","Sheet1");
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                    +ExcelUtils.getCellData(1,1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

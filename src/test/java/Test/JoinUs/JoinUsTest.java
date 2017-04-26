@@ -37,10 +37,8 @@ public class JoinUsTest extends BaseTest {
     }
     protected void openPage(){
         loginPage.login("admin", "789456");
-        assertTrue(isElementPresent(homePage.appManagementMenuButton));
-        homePage.appManagementMenuButton.click();
-        assertTrue(isElementPresent(homePage.appManagementSubButtons.get(1)));
-        homePage.appManagementSubButtons.get(2).click();
+        assertTrue(homePage.isVisible());
+        homePage.openPage("App Management","Join us");
         assertTrue(joinUsPage.isVisible());
     }
     public boolean isElementPresent(WebElement element){
