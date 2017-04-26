@@ -1,56 +1,78 @@
 package Pages.HBBusiness;
 
+import Pages.State;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.util.List;
 
 /**
  * Created by liana on 4/14/17.
  */
-public class AddEditHBBusinessPage {
-    @FindBy(how = How.XPATH, using = AddEditHBBusinessPageXPath.NAME_FIELD)
-    public WebElement nameField;
-    @FindBy(how = How.XPATH, using = AddEditHBBusinessPageXPath.IMAGE_FIELD)
-    public WebElement imageField;
-    @FindBy(how = How.XPATH, using = AddEditHBBusinessPageXPath.SAVE_BUTTON)
-    public WebElement saveButton;
+public class AddEditHBBusinessPage extends State {
+    @FindBy(xpath = AddEditHBBusinessPageConst.NAME_FIELD)
+    private WebElement nameField;
+    @FindBy(xpath = AddEditHBBusinessPageConst.IMAGE_FIELD)
+    private WebElement imageField;
+    @FindBy(xpath = AddEditHBBusinessPageConst.IMAGE)
+    private WebElement image;
+    @FindBy(xpath = AddEditHBBusinessPageConst.IMAGE_REMOVE_BUTTON)
+    private WebElement imageRemoveButton;
+    @FindBy(xpath = AddEditHBBusinessPageConst.SAVE_BUTTON)
+    private WebElement saveButton;
 
     public AddEditHBBusinessPage(WebDriver webDriver){
         PageFactory.initElements(webDriver,this);
     }
-    public void add(HBBusiness hbBusiness){
+
+    public void addHBBusiness(HBBusiness hbBusiness){
         setName(hbBusiness.getName());
         setImage(hbBusiness.getImage());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        saveChanges();
     }
     public void setName(String name){
         nameField.sendKeys(name);
     }
-    public void setImage(String image/*List<String> images*/) {
-        //for(String image : images){
+    public void setImage(String image) {
+        imageField.click();
+        if(image != null) {
             File file = new File(System.getProperty("user.dir"), image);
-            imageField.click();
             uploadFile(file.getAbsolutePath());
-        //}
+        }
+        isElementPresent(imageRemoveButton);
     }
-    public void save(){
+    public String getName(){
+        return nameField.getAttribute("value");
+    }
+    public String getImage(){
+        return image.getAttribute("innerHTML");
+    }
+    public void clearNameField(){
+        nameField.clear();
+    }
+    public void clearImageField(){
+        imageRemoveButton.click();
+    }
+    public void saveChanges(){
         saveButton.click();
     }
-    private void setClipboardData(String string) {
-        StringSelection stringSelection = new StringSelection(string);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-    }
-
     private void uploadFile(String fileLocation) {
         try {
-            setClipboardData(fileLocation);
+            StringSelection stringSelection = new StringSelection(fileLocation);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+           // setClipboardData(fileLocation);
             Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);
@@ -61,5 +83,8 @@ public class AddEditHBBusinessPage {
         } catch (Exception exp) {
             exp.printStackTrace();
         }
+    }
+    public boolean isVisible(){
+        return isElementPresent(saveButton);
     }
 }

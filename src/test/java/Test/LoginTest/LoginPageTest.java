@@ -1,63 +1,36 @@
 package Test.LoginTest;
 
-import Pages.HomePage;
+import Pages.HomePage.HomePage;
 import Pages.Login.LoginPage;
-import WebDriverSupport.WebDriverBase;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import Pages.Login.User;
+import Test.BaseTest.BaseTest;
 import org.testng.annotations.*;
 
-/**
- * Created by liana on 4/7/17.
- */
-public class LoginPageTest {
-    private WebDriverBase webDriverBase = WebDriverBase.getDriverInstance();
-    private WebDriver webDriver = null;
-    private LoginPage loginPage = null;
-    private HomePage homePage = null;
-    @BeforeTest
-    private void start(){
-        webDriverBase.start();
-    }
-    @AfterTest
-    private void finish(){
-        webDriverBase.close();
-    }
-    @BeforeClass
-    private void initializeMembers(){
-        webDriver = webDriverBase.getWebDriver();
+import static org.testng.Assert.assertTrue;
+
+
+public class LoginPageTest extends BaseTest{
+    private LoginPage loginPage;
+    private HomePage homePage;
+
+    protected void initializeMembers(){
         homePage = new HomePage(webDriver);
         loginPage = new LoginPage(webDriver);
     }
-    @BeforeMethod
-    private void beforeMethod(){
-        webDriver.get("http://hbao.codebnb.me");
-        Assert.assertTrue(isElementPresent(loginPage.loginButton));
-    }
+    protected void openPage() {}
+
     @Test(dataProvider = "PTData", dataProviderClass = LoginPageData.class)
-    public void validateLoginWorks(String username, String password) {
-        loginPage.clearFields();
-        loginPage.login(username, password);
-        Assert.assertTrue(isElementPresent(homePage.logoutButton));
-        homePage.logout();
+    void validateLoginWorks(User user/*String username, String password*/) {
+        loginPage.login(user);
+        assertTrue(homePage.isVisible());
     }
     @Test(dataProvider = "NTData", dataProviderClass = LoginPageData.class)
-    private void validateFieldCheckIsDone(String username, String password) {
-        loginPage.clearFields();
-        loginPage.login(username, password);
-        Assert.assertTrue(isElementPresent(loginPage.loginButton));
+    void validateFieldCheckIsDone(User user/*String username, String password*/) {
+        loginPage.login(user);
+        assertTrue(loginPage.isVisible());
     }
-    private boolean isElementPresent(WebElement element){
-        WebDriverWait wait = new WebDriverWait(webDriver,20);
-        try{
-            wait.until(ExpectedConditions.visibilityOf(element));
-            return true;
-        } catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
+    @Test
+    void t(){
+        LoginPageData.parseFile("svg");
     }
 }

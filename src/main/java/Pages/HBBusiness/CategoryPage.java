@@ -1,32 +1,45 @@
 package Pages.HBBusiness;
 
+import Pages.State;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 /**
  * Created by liana on 4/14/17.
  */
-public class CategoryPage {
-    @FindBy(how = How.XPATH, using = CategoryPageXPath.NAME_FIELD)
-    public WebElement nameField;
-    @FindBy(how = How.XPATH, using = CategoryPageXPath.IMAGE_FIELD)
-    public List<WebElement> imageField;
-    @FindBy(how = How.XPATH, using = CategoryPageXPath.EDIT_BUTTON)
-    public WebElement editButton;
+public class CategoryPage extends State{
+    @FindBy(xpath = CategoryPageConst.NAME_FIELD)
+    private WebElement nameField;
+    @FindBy(xpath = CategoryPageConst.IMAGE_FIELD)
+    private WebElement imageField;
+    @FindBy(xpath = CategoryPageConst.EDIT_BUTTON)
+    private WebElement editButton;
 
     public CategoryPage(WebDriver webDriver){
         PageFactory.initElements(webDriver,this);
     }
+
     public String getName(){
         return nameField.getText();
+    }
+    public String getImage(){
+        return imageField.getAttribute("src");
     }
     public void editHBBusiness(){
         editButton.click();
     }
+    public boolean isVisible() {
+        return isElementPresent(editButton);
+    }
+
+
 
 }

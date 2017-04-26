@@ -8,7 +8,7 @@ import java.util.List;
 public class JoinUs {
     String name;
     String mainImage;
-    List<String> sliderImages;
+    String sliderImages;
 
     public String getName() {
         return name;
@@ -22,10 +22,10 @@ public class JoinUs {
     public void setMainImage(String mainImage) {
         this.mainImage = mainImage;
     }
-    public List<String> getSliderImages() {
+    public String getSliderImages() {
         return sliderImages;
     }
-    public void setSliderImages(List<String> sliderImages) {
+    public void setSliderImages(String sliderImages) {
         this.sliderImages = sliderImages;
     }
 }

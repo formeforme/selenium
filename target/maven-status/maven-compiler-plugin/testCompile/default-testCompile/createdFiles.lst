@@ -1,10 +1,7 @@
-Test/CategoriesTest/CategoriesPageTest.class
-Test/CharitiesTest/AddEditCharityPageTest.class
-Test/CategoriesTest/AddEditCategoryPageTest.class
-Test/FirstPageTest.class
-Test/HomePageTest.class
-Test/BaseTestClass.class
-Test/HBBusinessTest/HBBusinessPageTest.class
-Test/CategoriesTest/AddEditSubCategoryPageTest.class
+Test/CharitiesTest/CharitiesPageData$4.class
 Test/CharitiesTest/CharitiesPageTest.class
-Test/CategoriesTest/CategoryPageTest.class
+Test/CategoriesTest/CategoriesPageTest.class
+Test/CharitiesTest/CharitiesPageData$3.class
+Test/CharitiesTest/CharitiesPageData$5.class
+Test/HBBusinessTest/HBBusinessPageTest.class
+Test/CharitiesTest/CharitiesPageData$2.class

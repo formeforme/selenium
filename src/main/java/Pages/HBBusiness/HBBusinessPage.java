@@ -1,5 +1,6 @@
 package Pages.HBBusiness;
 
+import Pages.State;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,17 +12,17 @@ import java.util.List;
 /**
  * Created by liana on 4/14/17.
  */
-public class HBBusinessPage {
-    @FindBy(how = How.XPATH, using = HBBusinessPageXPath.ADD_BUTTON)
-    public WebElement addButton;
-    @FindBy(how = How.XPATH, using = HBBusinessPageXPath.SEARCH_FIELD)
-    public WebElement searchField;
-    @FindBy(how = How.XPATH, using = HBBusinessPageXPath.SEARCH_BUTTON)
-    public WebElement searchButton;
-    @FindBy(how = How.XPATH, using = HBBusinessPageXPath.ITEMS)
-    public List<WebElement> items;
-    @FindBy(how = How.XPATH, using = HBBusinessPageXPath.DELETE_BUTTONS)
-    public List<WebElement> deleteButtons;
+public class HBBusinessPage extends State {
+    @FindBy(xpath = HBBusinessPageConst.ADD_BUTTON)
+    private WebElement addButton;
+    @FindBy(xpath = HBBusinessPageConst.SEARCH_FIELD)
+    private WebElement searchField;
+    @FindBy(xpath = HBBusinessPageConst.SEARCH_BUTTON)
+    private WebElement searchButton;
+    @FindBy(xpath = HBBusinessPageConst.ITEMS)
+    private List<WebElement> items;
+    @FindBy(xpath = HBBusinessPageConst.DELETE_BUTTONS)
+    private List<WebElement> deleteButtons;
 
     public HBBusinessPage(WebDriver webDriver){
         PageFactory.initElements(webDriver,this);
@@ -30,8 +31,7 @@ public class HBBusinessPage {
     public void addHBBusiness(){
         addButton.click();
     }
-    public void openHBBusiness(/*String name*/HBBusiness hbBusiness){
-        String name = hbBusiness.getName();
+    public void openHBBusiness(String name){
         for(WebElement item : items){
             if(item.getText().equals(name)){
                 item.click();
@@ -39,24 +39,25 @@ public class HBBusinessPage {
             }
         }
     }
-    public void deleteHBBusiness(HBBusiness hbBusiness){
-        String name = hbBusiness.getName();
+    public void deleteHBBusiness(String name){
         for(int i = 0; i < items.size(); ++i) {
-            if(items.get(i).getText().equals(name)){
+            if(items.get(i).getText().contains(name)){
                 deleteButtons.get(i).click();
-               // break;
+                break;
             }
         }
     }
-    public boolean searchHBBusiness(HBBusiness hbBusiness){
-        String name = hbBusiness.getName();
+    public boolean searchHBBusiness(String name){
         searchField.sendKeys(name);
         searchButton.click();
         for(WebElement item : items){
-            if(item.getText().contains(name)){
+            if(item.getText().equals(name)){
                 return true;
             }
         }
         return false;
+    }
+    public boolean isVisible(){
+        return isElementPresent(addButton);
     }
 }

@@ -6,8 +6,8 @@ import java.util.List;
  * Created by liana on 4/13/17.
  */
 public class SubCategory {
-    private String name = null;
-    private List<String> images = null;//TODO
+    private String name;
+    private List<String> images;//TODO
     private boolean isShown;
 
     public String getName() {

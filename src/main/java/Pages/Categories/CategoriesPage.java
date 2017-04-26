@@ -1,36 +1,67 @@
 package Pages.Categories;
 
+import Pages.State;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
 /**
  * Created by liana on 4/12/17.
  */
-public class CategoriesPage {
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[1]/a/button")
-    public WebElement createButton;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[3]/form/div[2]/input")
-    public WebElement searchField;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[3]/form/div[2]/span/button")
-    public WebElement searchButton;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[3]/table/tbody/tr")
-    public List<WebElement> categories;
+public class CategoriesPage extends State {
+    @FindBy(how = How.XPATH, using = CategoriesPageConst.CREATE_BUTTON)
+    private WebElement createButton;
+    @FindBy(how = How.XPATH, using = CategoriesPageConst.SEARCH_FIELD)
+    private WebElement searchField;
+    @FindBy(how = How.XPATH, using = CategoriesPageConst.SEARCH_BUTTON)
+    private WebElement searchButton;
+    @FindBy(how = How.XPATH, using = CategoriesPageConst.CATEGORIES)
+    private List<WebElement> categories;
+    @FindBy(how = How.XPATH, using = CategoriesPageConst.DELETE_BUTTONS)
+    private List<WebElement> deleteButtons;
+
 
     public CategoriesPage(WebDriver webDriver){
         PageFactory.initElements(webDriver,this);
     }
     public void createCategory(){
-        createButton.click();
+            createButton.click();
     }
-    public void searchCategory(Category category){
-        searchField.sendKeys(category.getName());
+    public boolean searchCategory(String name){
+        searchField.sendKeys(name);
         searchButton.click();
+        for(WebElement category : categories){
+            if(category.getText().equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
-    public void deleteCategory(){}
+    public void deleteCategory(String name){
+        for(int i = 0; i < categories.size(); ++i){
+            if(categories.get(i).getText().contains(name)) {
+                deleteButtons.get(i).click();
+                break;
+            }
+        }
+    }
+    public void openCategory(String name){
+        for(WebElement category : categories){
+            if(category.getText().equals(name)){
+                category.click();
+                break;
+            }
+        }
+    }
+    public boolean isVisible(){
+        return isElementPresent(createButton);
+    }
 }

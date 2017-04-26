@@ -16,15 +16,15 @@ import java.util.List;
  * Created by liana on 4/13/17.
  */
 public class AddEditSubCategoryPage {
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[1]/div/div")
+    @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.IMAGE_FIELD)
     public WebElement imageField;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[2]/div/input")
+    @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.NAME_FIELD)
     public WebElement nameField;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[3]/label[2]/input")
+    @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.YES_RADIO_BUTTON)
     public WebElement yesRadioButton;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[3]/label[3]/input")
+    @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.NO_RADIO_BUTTON)
     public WebElement noRadioButton;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[3]/button")
+    @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.SAVE_BUTTON)
     public WebElement saveButton;
 
     public AddEditSubCategoryPage(WebDriver webDriver){
@@ -34,6 +34,9 @@ public class AddEditSubCategoryPage {
         fillNameField(subCategory.getName());
         fillImageField(subCategory.getImages());
         chooseType(subCategory.getIsShown());
+    }
+    public void save(){
+        saveButton.click();
     }
     private void fillNameField(String name){
         nameField.sendKeys(name);
@@ -46,7 +49,6 @@ public class AddEditSubCategoryPage {
             uploadFile(file.getAbsolutePath());
         }
     }
-    //TODO
     private void chooseType(boolean isShown){
         if(isShown){
             yesRadioButton.click();
@@ -54,16 +56,11 @@ public class AddEditSubCategoryPage {
             noRadioButton.click();
         }
     }
-    public void save(){
-        saveButton.click();
-    }
-
     private void setClipboardData(String string) {
         //StringSelection is a class that can be used for copy and paste operations.
         StringSelection stringSelection = new StringSelection(string);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
     }
-
     private void uploadFile(String fileLocation) {
         try {
             //Setting clipboard with file location

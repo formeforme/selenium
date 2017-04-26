@@ -6,9 +6,9 @@ import java.util.List;
  * Created by liana on 4/12/17.
  */
 public class Category {
-    private String name = null;
-    private List<String> images = null;//TODO
-    private String type = null;//TODO
+    private String name;
+    private String type;
+    private String image;
 
     public String getName() {
         return name;
@@ -16,11 +16,11 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    public List<String> getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
-    public void setImages(List<String> images) {
-        this.images = images;
+    public void setImage(String image) {
+        this.image = image;
     }
     public String getType() {
         return type;

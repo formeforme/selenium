@@ -1,5 +1,6 @@
 package Pages.JoinUs;
 
+import Pages.State;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,15 +12,17 @@ import java.util.List;
 /**
  * Created by liana on 4/10/17.
  */
-public class JoinUsPage {
-    @FindBy(how = How.XPATH, using = JoinUsXPath.CREATE_BUTTON)
-    public WebElement createButton;
-    @FindBy(how = How.XPATH, using = JoinUsXPath.SEARCH_FIELD)
-    public WebElement searchField;
-    @FindBy(how = How.XPATH, using = JoinUsXPath.SEARCH_BUTTON)
-    public WebElement searchButton;
-    @FindBy(how = How.XPATH, using = JoinUsXPath.ORG_LIST)
-    public List<WebElement> orgList;
+public class JoinUsPage extends State {
+    @FindBy(xpath = JoinUsPageConst.CREATE_BUTTON)
+    private WebElement createButton;
+    @FindBy(xpath = JoinUsPageConst.SEARCH_FIELD)
+    private WebElement searchField;
+    @FindBy(xpath = JoinUsPageConst.SEARCH_BUTTON)
+    private WebElement searchButton;
+    @FindBy(xpath = JoinUsPageConst.ORG_LIST)
+    private List<WebElement> orgList;
+    @FindBy(xpath = JoinUsPageConst.DELETE_BUTTONS)
+    private List<WebElement> deleteButtons;
 
     public JoinUsPage(WebDriver webDriver){
         PageFactory.initElements(webDriver,this);
@@ -27,16 +30,34 @@ public class JoinUsPage {
     public void createOrganization(){
         createButton.click();
     }
-    public void searchOrganization(String name){
+    public boolean searchOrganization(String name){
         searchField.sendKeys(name);
         searchButton.click();
-    }
-    public void deleteOrganization(){}
-    public boolean isVisible() {
-        try {
-            return createButton.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
+        for(WebElement org : orgList){
+            if(org.getText().equals(name)){
+                return true;
+            }
         }
+        return false;
+    }
+    public void deleteOrganization(String name){
+        for(int i = 0; i < orgList.size(); ++i) {
+            if(orgList.get(i).getText().contains(name)){
+                deleteButtons.get(i).click();
+                break;
+            }
+        }
+    }
+    public void openOrganization(String name){
+        for(WebElement org : orgList){
+            if(org.getText().equals(name)){
+                org.click();
+                break;
+            }
+        }
+    }
+
+    public boolean isVisible(){
+        return isElementPresent(createButton);
     }
 }

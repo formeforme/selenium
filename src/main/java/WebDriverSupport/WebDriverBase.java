@@ -37,9 +37,9 @@ public class WebDriverBase {
     }
 
     public void start(){
-        //if(webDriver != null) {
-        //    return;
-        //}
+        if(webDriver != null) {
+            return;
+        }
         switch (executeBrowser){
             case CHROME:
                 System.setProperty("webdriver.chrome.driver","./driver/chromedriver");

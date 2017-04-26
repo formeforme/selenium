@@ -1,10 +1,13 @@
 package Pages.Categories;
 
+import Pages.State;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -15,46 +18,64 @@ import java.util.List;
 /**
  * Created by liana on 4/12/17.
  */
-public class AddEditCategoryPage {
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[1]/div/input")
-    public WebElement categoryNameField;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[2]/div/div/div/span")
-    public WebElement categoryImageField;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[3]/div/label[1]/input")
-    public WebElement categoryOnlineSalesButton;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[3]/div/label[2]/input")
-    public WebElement categoryFreeButton;
-    @FindBy(how = How.XPATH, using = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[3]/button")
-    public WebElement saveButton;
-    @FindBy(how = How.XPATH, using = "//div[contains(@class,'dz-image-preview')]")
-    public List<WebElement> images;
+public class AddEditCategoryPage extends State {
+    @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.NAME_FIELD)
+    private WebElement categoryNameField;
+    @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.IMAGE_FIELD)
+    private WebElement categoryImageField;
+    @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.ONLINE_SALES_BUTTON)
+    private WebElement categoryOnlineSalesButton;
+    @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.FREE_BUTTON)
+    private WebElement categoryFreeButton;
+    @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.SAVE_BUTTON)
+    private WebElement saveButton;
+    @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.IMAGES)
+    private List<WebElement> images;
 
+    private WebDriver webDriver;
     public AddEditCategoryPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
+
     public void fillFields(Category category){
         fillNameField(category.getName());
-        fillImageField(category.getImages());
+        fillImageField(category.getImage());
         chooseType(category.getType());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        save();
     }
     private void fillNameField(String name){
         categoryNameField.sendKeys(name);
     }
-    private void fillImageField(List<String> images) {
-        for(String image : images){
-            File file = new File(System.getProperty("user.dir"), image);
-            System.out.println(file.getAbsolutePath());
-            categoryImageField.click();
-            uploadFile(file.getAbsolutePath());
+    private void fillImageField(String image) {
+            //for(String image : images) {
+                File file = new File(System.getProperty("user.dir"), image);
+                categoryImageField.click();
+                uploadFile(file.getAbsolutePath());
+            //}
+    }
+    private void chooseType(String type) {
+        if (type.contains("OnlineSales")) {
+            categoryOnlineSalesButton.click();
+        } else {
+            categoryFreeButton.click();
         }
     }
-
+    public void save(){
+        if (isElementPresent(saveButton)){
+            saveButton.click();
+        }
+    }
     private void setClipboardData(String string) {
         //StringSelection is a class that can be used for copy and paste operations.
         StringSelection stringSelection = new StringSelection(string);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
     }
-
     private void uploadFile(String fileLocation) {
         try {
             //Setting clipboard with file location
@@ -72,15 +93,8 @@ public class AddEditCategoryPage {
             exp.printStackTrace();
         }
     }
-    //TODO
-    private void chooseType(String type){
-        if(type.contains("OnlineSales")){
-            categoryOnlineSalesButton.click();
-        } else {
-            categoryFreeButton.click();
-        }
-    }
-    public void save(){
-        saveButton.click();
+
+    public boolean isVisible(){
+        return isElementPresent(saveButton);
     }
 }

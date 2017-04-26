@@ -5,7 +5,7 @@ package Pages.Users;
  */
 public class UsersPageXPath {
     public static final String USERS = "";
-    public static final String USERS = "";
-    public static final String USERS = "";
+    //public static final String USERS = "";
+    //public static final String USERS = "";
 
 }
