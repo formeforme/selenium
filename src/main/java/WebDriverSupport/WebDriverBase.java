@@ -65,7 +65,7 @@ public class WebDriverBase {
         }
         switch (executeBrowser){
             case CHROME:
-              //  System.setProperty("webdriver.chrome.driver","./driver/chromedriver");
+                System.setProperty("webdriver.chrome.driver","./driver/chromedriver");
                 webDriver = new ChromeDriver();
                 webDriver.get(URL);
                 break;
