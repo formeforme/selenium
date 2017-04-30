@@ -70,7 +70,7 @@ public class WebDriverBase {
                 webDriver.get(URL);
                 break;
             case FIREFOX:
-              //  System.setProperty("webdriver.firefox.marionette","./driver/geckodriver");
+                System.setProperty("webdriver.firefox.marionette","./driver/geckodriver");
                 webDriver = new FirefoxDriver();
                 webDriver.get(URL);
                 break;
