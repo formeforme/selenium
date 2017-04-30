@@ -65,12 +65,12 @@ public class WebDriverBase {
         }
         switch (executeBrowser){
             case CHROME:
-                System.setProperty("webdriver.chrome.driver","./driver/chromedriver");
+              //  System.setProperty("webdriver.chrome.driver","./driver/chromedriver");
                 webDriver = new ChromeDriver();
                 webDriver.get(URL);
                 break;
             case FIREFOX:
-                System.setProperty("webdriver.firefox.marionette","./driver/geckodriver");
+              //  System.setProperty("webdriver.firefox.marionette","./driver/geckodriver");
                 webDriver = new FirefoxDriver();
                 webDriver.get(URL);
                 break;

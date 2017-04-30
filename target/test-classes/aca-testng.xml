@@ -6,7 +6,6 @@
   <test name="Test" preserve-order="true" parallel="none">
     <classes>
       <!--class name="Test.FirstPage.FirstPageTest" /-->
-      <!--class name="Test.LoginTest.LoginPageTest" /-->
       <!--class naTest.HomePage.HomePageTestTest" /-->
       <!--class name="Test.CharitiesTest.CharitiesPageTest" /-->
       <!--class name="Test.CategoriesTest.CategoriesPageTest" /-->
@@ -20,7 +19,8 @@
   </test>
   <test name="Test3" preserve-order="true">
     <classes>
-      <!--class name="Test.BaseTest.BaseTest"/-->
+      <class name="Test.BaseTest.BaseTest"/>
+      <class name="Test.LoginTest.LoginPageTest" />
       <!--class name="Test.JoinUs.JoinUsTest"/-->
     </classes>
   </test>
