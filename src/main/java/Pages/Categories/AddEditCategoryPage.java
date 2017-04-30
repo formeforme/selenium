@@ -6,31 +6,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.util.List;
 
 /**
  * Created by liana on 4/12/17.
  */
 public class AddEditCategoryPage extends State {
     @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.NAME_FIELD)
-    private WebElement categoryNameField;
+    private WebElement nameField;
     @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.IMAGE_FIELD)
-    private WebElement categoryImageField;
+    private WebElement imageField;
     @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.ONLINE_SALES_BUTTON)
-    private WebElement categoryOnlineSalesButton;
+    private WebElement onlineSalesButton;
     @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.FREE_BUTTON)
-    private WebElement categoryFreeButton;
+    private WebElement freeButton;
     @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.SAVE_BUTTON)
     private WebElement saveButton;
     @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.IMAGES)
-    private List<WebElement> images;
+    private WebElement image;
 
     private WebDriver webDriver;
     public AddEditCategoryPage(WebDriver webDriver){
@@ -38,38 +35,47 @@ public class AddEditCategoryPage extends State {
         PageFactory.initElements(webDriver,this);
     }
 
-    public void fillFields(Category category){
-        fillNameField(category.getName());
-        fillImageField(category.getImage());
+    public void addCategory(Category category){
+        setName(category.getName());
+        setImage(category.getImage());
         chooseType(category.getType());
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        save();
+        saveChanges();
     }
-    private void fillNameField(String name){
-        categoryNameField.sendKeys(name);
+
+    public String getName(){
+        return nameField.getAttribute("value");
     }
-    private void fillImageField(String image) {
+    public void setName(String name){
+        nameField.sendKeys(name);
+    }
+    public void clearNameField(){
+        nameField.clear();
+    }
+    public String getImage(){
+        return image.getAttribute("src");
+    }
+    public void setImage(String image) {
             //for(String image : images) {
                 File file = new File(System.getProperty("user.dir"), image);
-                categoryImageField.click();
+                imageField.click();
                 uploadFile(file.getAbsolutePath());
             //}
     }
+    public void clearImageField(){}
     private void chooseType(String type) {
         if (type.contains("OnlineSales")) {
-            categoryOnlineSalesButton.click();
+            onlineSalesButton.click();
         } else {
-            categoryFreeButton.click();
+            freeButton.click();
         }
     }
-    public void save(){
-        if (isElementPresent(saveButton)){
-            saveButton.click();
-        }
+    public void saveChanges(){
+        saveButton.click();
     }
     private void setClipboardData(String string) {
         //StringSelection is a class that can be used for copy and paste operations.

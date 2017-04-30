@@ -1,25 +1,54 @@
 package WebDriverSupport;
 
+import Pages.Login.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 /**
  * Created by liana on 4/7/17.
  */
 public class WebDriverBase {
-    private static WebDriver webDriver = null;
-    private static WebDriverWait driverWait = null;
-    private String URL = "http://hbao.codebnb.me";
-    private BROWSER executeBrowser = BROWSER.FIREFOX;
+    private static WebDriver webDriver;
+    private String URL;
+    private BROWSER executeBrowser;
     private static WebDriverBase driverInstance = new WebDriverBase();
+    private final String PROPERTIES_FILE = "data/data.properties";
+    public static User user;
 
     public enum BROWSER {
         FIREFOX, CHROME
     }
 
-    private WebDriverBase(){}
+    private WebDriverBase(){
+        initializeMembers();
+    }
+
+    private void initializeMembers() {
+        try {
+            FileInputStream stream = new FileInputStream(new File(PROPERTIES_FILE));
+            Properties properties = new Properties();
+            properties.load(stream);
+            this.URL = properties.getProperty("URL");
+            String browser = properties.getProperty("BROWSER");
+            this.executeBrowser = BROWSER.valueOf(browser);
+            user = new User();
+            user.setUsername(properties.getProperty("USERNAME"));
+            user.setPassword(properties.getProperty("PASSWORD"));
+            stream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     public WebDriver getWebDriver(){
         return webDriver;
@@ -29,12 +58,6 @@ public class WebDriverBase {
         return driverInstance;
     }
 
-    public static WebDriverWait getWaitDriver(){
-        if(driverWait == null) {
-            driverWait = new WebDriverWait(webDriver,4);
-        }
-        return driverWait;
-    }
 
     public void start(){
         if(webDriver != null) {

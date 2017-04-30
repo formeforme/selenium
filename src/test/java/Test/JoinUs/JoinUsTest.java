@@ -38,19 +38,8 @@ public class JoinUsTest extends BaseTest {
     protected void openPage(){
         loginPage.login("admin", "789456");
         assertTrue(homePage.isVisible());
-        homePage.openPage("App Management","Join us");
+        //homePage.openPage("App Management","Join us");
         assertTrue(joinUsPage.isVisible());
-    }
-    public boolean isElementPresent(WebElement element){
-        WebDriver webDriver = WebDriverBase.getDriverInstance().getWebDriver();
-        WebDriverWait wait = new WebDriverWait(webDriver,8);
-        try{
-            wait.until(ExpectedConditions.visibilityOf(element));
-            return true;
-        } catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
     }
 
     @Test(dataProvider = "PTData", dataProviderClass = JoinUsData.class)

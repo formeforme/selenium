@@ -9,5 +9,5 @@ public class AddEditCategoryPageConst {
     public static final String ONLINE_SALES_BUTTON = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[3]/div/label[1]/input";
     public static final String FREE_BUTTON = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[2]/div[3]/div/label[2]/input";
     public static final String SAVE_BUTTON = "/html/body/div/div[2]/div[2]/div[2]/div/form/div[2]/div[3]/button";
-    public static final String IMAGES = "//div[contains(@class,'dz-image-preview')]";
+    public static final String IMAGES = "//div[@class='dz-image']/img";
 }

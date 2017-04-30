@@ -1,101 +1,134 @@
 package Test.CategoriesTest;
 
-/**
- * Created by liana on 4/12/17.
- */
-public class CategoriesPageTest {
- /*   private WebDriverBase webDriverBase = WebDriverBase.getDriverInstance();
-    private WebDriver webDriver;
+import Pages.Categories.*;
+import Pages.HomePage.HomePage;
+import Pages.Login.LoginPage;
+import Test.BaseTest.BaseTest;
+import WebDriverSupport.WebDriverBase;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+
+public class CategoriesPageTest extends BaseTest{
     private HomePage homePage;
     private LoginPage loginPage;
     private CategoriesPage categoriesPage;
+    private CategoryPage categoryPage;
     private AddEditCategoryPage addEditCategoryPage;
+    private AddEditSubCategoryPage addEditSubCategoryPage;
 
-    @BeforeTest
-    private void start(){
-        webDriverBase.start();
-    }
-    @AfterTest
-    private void finish(){
-         webDriverBase.close();
-    }
-    @BeforeClass
-    private void initializeMembers(){
-        webDriver = webDriverBase.getWebDriver();
+    protected void initializeMembers(){
         homePage = new HomePage(webDriver);
         loginPage = new LoginPage(webDriver);
         categoriesPage = new CategoriesPage(webDriver);
+        categoryPage = new CategoryPage(webDriver);
         addEditCategoryPage = new AddEditCategoryPage(webDriver);
-        Assert.assertTrue(loginPage.isVisible());
-        loginPage.login("admin", "789456");
-        Assert.assertTrue(homePage.isVisible());
+        addEditSubCategoryPage = new AddEditSubCategoryPage(webDriver);
     }
-    @BeforeMethod
-    private void beforeMethod(){
-        Assert.assertTrue(isElementPresent(homePage.appManagementMenuButton));
-        homePage.appManagementMenuButton.click();
-        Assert.assertTrue(isElementClickable(homePage.appManagementSubButtons.get(0)));
-        homePage.appManagementSubButtons.get(0).click();
-        ///Assert.assertTrue(categoriesPage.isVisible());
-        Assert.assertTrue(isElementClickable(categoriesPage.createButton));
-
-    }
-    private boolean isElementClickable(WebElement element){
-        WebDriverWait wait = new WebDriverWait(webDriver,20);
-        try{
-            wait.until(ExpectedConditions.elementToBeClickable(element));
-            return true;
-        } catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-    private boolean isElementPresent(WebElement element){
-        WebDriverWait wait = new WebDriverWait(webDriver,20);
-        try{
-            wait.until(ExpectedConditions.visibilityOf(element));
-            return true;
-        } catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
+    protected void openPage(){
+        loginPage.login(WebDriverBase.user);
+        assertTrue(homePage.isVisible());
+        homePage.openCategories();
+        assertTrue(categoriesPage.isVisible());
     }
 
-    private Category getCategory(){
-        String name = "auto_test_category";
-        List<String> images = new LinkedList<String>();
-        images.add("./image/coffee.jpeg");
-        String type = "OnlineSales";
-        Category category = new Category();
-        category.setName(name);
-        category.setImages(images);
-        category.setType(type);
-        return category;
-    }
-    @Test(priority = -1)
-    private void validateCreateWorks(){
+    @Test(priority = -1, dataProvider = "PTData", dataProviderClass = CategoriesPageData.class)
+    void validateAddWorks(Category category){
         categoriesPage.createCategory();
-        addEditCategoryPage.fillFields(getCategory());
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        assertTrue(addEditCategoryPage.isVisible());
+        addEditCategoryPage.addCategory(category);
+        assertTrue(categoriesPage.isVisible());
+        assertTrue(categoriesPage.searchCategory(category.getName()));
+    }
+    @Test(dataProvider = "PTData", dataProviderClass = CategoriesPageData.class)
+    void validateSearchWorks(Category category){
+        assertTrue(categoriesPage.searchCategory(category.getName()));
+    }
+    @Test(dataProvider = "PTData", dataProviderClass = CategoriesPageData.class)
+    void validateOpenWorks(Category category){
+        String name = category.getName();
+        assertTrue(categoriesPage.searchCategory(name));
+        categoriesPage.openCategory(name);
+        assertTrue(categoryPage.isVisible());
+        assertEquals(categoryPage.getName(),name);
+        //assertEquals(categoryPage.imageField.size(),hbBusiness.getImage());
+    }
+    @Test(priority = 1, dataProvider = "PTData", dataProviderClass = CategoriesPageData.class)
+    void validateDeleteWorks(Category category){
+        String name = category.getName();
+        assertTrue(categoriesPage.searchCategory(name));
+        categoriesPage.deleteCategory(name);
+        assertFalse(categoriesPage.searchCategory(name));
+    }
+   // @Test(dataProvider = "NTData", dataProviderClass = HBBusinessPageData.class)
+    void validateNoWrongInputsAdd(Category category){
+        categoriesPage.createCategory();
+        assertTrue(addEditCategoryPage.isVisible());
+        addEditCategoryPage.addCategory(category);
+        assertTrue(addEditCategoryPage.isVisible());
+    }
+    @Test(dataProvider = "PTData", dataProviderClass = CategoriesPageData.class)
+    void validateRightEditPageOpened(Category category){
+        String name = category.getName();
+        categoriesPage.openCategory(name);
+        assertTrue(categoryPage.isVisible());
+        String image = categoryPage.getImage();
+        categoryPage.editCategory();
+        assertTrue(addEditCategoryPage.isVisible());
+        assertEquals(addEditCategoryPage.getName(),name);
+        assertTrue(image.contains(addEditCategoryPage.getImage()));
+    }
+    @Test(dataProvider = "PTData", dataProviderClass = CategoriesPageData.class)
+    void validateEditWorks(Category category){
+        String oldName = category.getName();
+        String newName = category.getName()+category.getName();
+        String name = newName;
+        for(int i = 0; i<2; ++i) {
+            categoriesPage.openCategory(oldName);
+            assertTrue(categoryPage.isVisible());
+            categoryPage.editCategory();
+            assertTrue(addEditCategoryPage.isVisible());
+            addEditCategoryPage.clearNameField();
+            addEditCategoryPage.setName(newName);
+            addEditCategoryPage.saveChanges();
+            assertTrue(categoriesPage.isVisible());
+            assertTrue(categoriesPage.searchCategory(newName));
+            newName = oldName;
+            oldName = name;
         }
-        addEditCategoryPage.save();
     }
-    @Test
-    public void validateSearchWorks(){
-        Assert.assertTrue(categoriesPage.searchCategory(getCategory().getName()));
+    @Test(dataProvider = "PTData", dataProviderClass = SubCategoryPageData.class)
+    void addSubCategory(SubCategory subCategory){
+        categoriesPage.openCategory("auto_Category");
+        assertTrue(categoryPage.isVisible());
+        categoryPage.createSubCategory();
+        assertTrue(addEditSubCategoryPage.isVisible());
+        addEditSubCategoryPage.addSubCategory(subCategory);
+        assertTrue(categoryPage.isVisible());
     }
-    @Test(priority = 1)
-    public void validateDeleteWorks(){
-        categoriesPage.deleteCategory(getCategory().getName());
-        Assert.assertFalse(categoriesPage.searchCategory(getCategory().getName()));
-    }
-    @Test
-    public void validateOpenWorks(){
+    @Test(dataProvider = "PTData", dataProviderClass = SubCategoryPageData.class)
+    void editSubCategory(SubCategory subCategory){
 
     }
-    */
+    @Test(dataProvider = "PTData", dataProviderClass = SubCategoryPageData.class)
+    void validateRightEditSubCategoryPage(SubCategory subCategory){
+        String name = subCategory.getName();
+        categoriesPage.openCategory("auto_Category");
+        assertTrue(categoryPage.isVisible());
+        categoryPage.editSubCategory(name);
+        assertTrue(addEditSubCategoryPage.isVisible());
+        assertEquals(addEditSubCategoryPage.getName(),name);
+//        assertTrue(image.contains(addEditCategoryPage.getImage()));
+    }
+    @Test(dataProvider = "NTData", dataProviderClass = SubCategoryPageData.class)
+    void neditSubCategory(SubCategory subCategory){
+
+    }
+    @Test(dataProvider = "PTData", dataProviderClass = SubCategoryPageData.class)
+    void deleteSubCategory(SubCategory subCategory){
+
+    }
 }
 

@@ -33,15 +33,9 @@ public class HBBusinessPageTest extends BaseTest{
         addEditHBBusinessPage = new AddEditHBBusinessPage(webDriver);
     }
     protected void openPage(){
-        loginPage.login("admin", "789456");
+        loginPage.login(WebDriverBase.user);
         assertTrue(homePage.isVisible());
-        homePage.appManagementMenuButton.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        homePage.appManagementSubButtons.get(1).click();
+        homePage.openHBBusiness();
         assertTrue(hbBusinessPage.isVisible());
     }
 
@@ -80,7 +74,17 @@ public class HBBusinessPageTest extends BaseTest{
         addEditHBBusinessPage.addHBBusiness(hbBusiness);
         assertTrue(addEditHBBusinessPage.isVisible());
     }
-
+    @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
+    void validateRightEditPageOpened(HBBusiness hbBusiness){
+        String name = hbBusiness.getName();
+        hbBusinessPage.openHBBusiness(name);
+        assertTrue(categoryPage.isVisible());
+        String image = categoryPage.getImage();
+        categoryPage.editHBBusiness();
+        assertTrue(addEditHBBusinessPage.isVisible());
+        assertEquals(addEditHBBusinessPage.getName(),name);
+        assertTrue(image.contains(addEditHBBusinessPage.getImage()));
+    }
     @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
     void validateEditWorks(HBBusiness hbBusiness){
         String oldName = hbBusiness.getName();
@@ -89,11 +93,8 @@ public class HBBusinessPageTest extends BaseTest{
         for(int i = 0; i<2; ++i) {
             hbBusinessPage.openHBBusiness(oldName);
             assertTrue(categoryPage.isVisible());
-            assertEquals(categoryPage.getName(), oldName);
             categoryPage.editHBBusiness();
             assertTrue(addEditHBBusinessPage.isVisible());
-            assertEquals(addEditHBBusinessPage.getName(), oldName);
-            //check image
             addEditHBBusinessPage.clearNameField();
             addEditHBBusinessPage.setName(newName);
             addEditHBBusinessPage.saveChanges();
@@ -103,77 +104,7 @@ public class HBBusinessPageTest extends BaseTest{
             oldName = name;
         }
     }
-
-    @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
-    void validateRightEditPageOpened(HBBusiness hbBusiness){
-        String name = hbBusiness.getName();
-        hbBusinessPage.openHBBusiness(name);
-        assertTrue(categoryPage.isVisible());
-        assertEquals(categoryPage.getName(),name);
-        String image = categoryPage.getImage();
-        categoryPage.editHBBusiness();
-        assertTrue(addEditHBBusinessPage.isVisible());
-        assertEquals(addEditHBBusinessPage.getName(),name);
-        assertTrue(image.contains(addEditHBBusinessPage.getImage()));
-    }
-    @Test
+    //@Test
     void validateRightTitle(){}
 
-    //comment save before run
-   // @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
-    void testAddFunctions(HBBusiness hbBusiness){
-        hbBusinessPage.addHBBusiness();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        addEditHBBusinessPage.addHBBusiness(hbBusiness);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(addEditHBBusinessPage.getName());
-        addEditHBBusinessPage.clearNameField();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(addEditHBBusinessPage.getImage());
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        addEditHBBusinessPage.clearImageField();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-   // @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
-    void testCategoryFunctions(HBBusiness hbBusiness){
-        hbBusinessPage.openHBBusiness(hbBusiness.getName());
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Name"+categoryPage.getName());
-        System.out.println("Image of self-created hb"+hbBusiness.getImage());
-        System.out.println("Image of categoryPage"+categoryPage.getImage());
-        categoryPage.editHBBusiness();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Image of editPage"+addEditHBBusinessPage.getImage());
-
-    }
 }

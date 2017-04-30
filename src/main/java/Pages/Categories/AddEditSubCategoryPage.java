@@ -1,5 +1,6 @@
 package Pages.Categories;
 
+import Pages.State;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +16,7 @@ import java.util.List;
 /**
  * Created by liana on 4/13/17.
  */
-public class AddEditSubCategoryPage {
+public class AddEditSubCategoryPage extends State {
     @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.IMAGE_FIELD)
     public WebElement imageField;
     @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.NAME_FIELD)
@@ -30,26 +31,35 @@ public class AddEditSubCategoryPage {
     public AddEditSubCategoryPage(WebDriver webDriver){
         PageFactory.initElements(webDriver,this);
     }
-    public void fillRequiredFields(SubCategory subCategory){
-        fillNameField(subCategory.getName());
-        fillImageField(subCategory.getImages());
-        chooseType(subCategory.getIsShown());
+    public void addSubCategory(SubCategory subCategory){
+        setName(subCategory.getName());
+        setImage(subCategory.getImages());
+        setType(subCategory.getIsShown());
+        save();
     }
     public void save(){
         saveButton.click();
     }
-    private void fillNameField(String name){
+    public void setName(String name){
         nameField.sendKeys(name);
     }
-    private void fillImageField(List<String> images) {
+    public String getName(){
+        return nameField.getAttribute("value");
+    }
+    private void setImage(List<String> images) {
         for(String image : images){
             File file = new File(System.getProperty("user.dir"), image);
             System.out.println(file.getAbsolutePath());
             imageField.click();
             uploadFile(file.getAbsolutePath());
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
-    private void chooseType(boolean isShown){
+    private void setType(boolean isShown){
         if(isShown){
             yesRadioButton.click();
         } else {
@@ -79,4 +89,7 @@ public class AddEditSubCategoryPage {
         }
     }
 
+    public boolean isVisible() {
+        return isElementPresent(saveButton);
+    }
 }

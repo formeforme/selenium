@@ -12,6 +12,8 @@
 -image one/list
 -delete all after test
 -sliderImage list
+-menu elements one by one
+-find element by text
 
    /* public boolean checkForBrokenImages() {
         for(WebElement image:imageField){
