@@ -38,10 +38,10 @@ public class LoginPage extends State {
     }
 
     public void setUsername(String username){
-        usernameField.sendKeys(username);
+        usernameField.sendKeys(String.valueOf(username));
     }
     public void setPassword(String password){
-        passwordField.sendKeys(password);
+        passwordField.sendKeys(String.valueOf(password));
     }
     public String getUsername(){
         return usernameField.getText();
