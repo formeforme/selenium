@@ -15,13 +15,13 @@
   <test name="Test2" preserve-order="true">
     <classes>
       <!--class name="Test.CategoriesTest.CategoriesPageTest" /-->
-      <class name="Test.HBBusinessTest.HBBusinessPageTest"/>
+      <!--class name="Test.HBBusinessTest.HBBusinessPageTest"/-->
     </classes>
   </test>
   <test name="Test3" preserve-order="true">
     <classes>
-      <class name="Test.BaseTest.BaseTest"/>
-      <class name="Test.JoinUs.JoinUsTest"/>
+      <!--class name="Test.BaseTest.BaseTest"/-->
+      <!--class name="Test.JoinUs.JoinUsTest"/-->
     </classes>
   </test>
   </suite>
