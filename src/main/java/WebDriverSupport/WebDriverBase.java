@@ -4,6 +4,7 @@ import Pages.Login.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -70,8 +71,11 @@ public class WebDriverBase {
                 webDriver.get(URL);
                 break;
             case FIREFOX:
-                System.setProperty("webdriver.firefox.marionette","./driver/geckodriver");
-                webDriver = new FirefoxDriver();
+                System.setProperty("webdriver.gecko.driver","./driver/geckodriver");
+                DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+                capabilities.setCapability("marionette", true);
+               webDriver = new FirefoxDriver(capabilities);
+                //webDriver = new FirefoxDriver();
                 webDriver.get(URL);
                 break;
         }

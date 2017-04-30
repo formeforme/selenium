@@ -110,7 +110,22 @@ public class CategoriesPageTest extends BaseTest{
     }
     @Test(dataProvider = "PTData", dataProviderClass = SubCategoryPageData.class)
     void editSubCategory(SubCategory subCategory){
-
+        String oldName = subCategory.getName();
+        String newName = subCategory.getName()+subCategory.getName();
+        String name = newName;
+        for(int i = 0; i<2; ++i) {
+            categoriesPage.openCategory(oldName);
+            assertTrue(categoryPage.isVisible());
+            categoryPage.editCategory();
+            assertTrue(addEditCategoryPage.isVisible());
+            addEditCategoryPage.clearNameField();
+            addEditCategoryPage.setName(newName);
+            addEditCategoryPage.saveChanges();
+            assertTrue(categoriesPage.isVisible());
+            assertTrue(categoriesPage.searchCategory(newName));
+            newName = oldName;
+            oldName = name;
+        }
     }
     @Test(dataProvider = "PTData", dataProviderClass = SubCategoryPageData.class)
     void validateRightEditSubCategoryPage(SubCategory subCategory){
@@ -128,6 +143,9 @@ public class CategoriesPageTest extends BaseTest{
     }
     @Test(dataProvider = "PTData", dataProviderClass = SubCategoryPageData.class)
     void deleteSubCategory(SubCategory subCategory){
+        String name = subCategory.getName();
+        categoriesPage.openCategory("auto_Category");
+        assertTrue(categoryPage.isVisible());
 
     }
 }
