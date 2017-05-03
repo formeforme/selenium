@@ -8,119 +8,97 @@ import Pages.JoinUs.JoinUsPage;
 import Pages.Login.LoginPage;
 import Test.BaseTest.BaseTest;
 import WebDriverSupport.WebDriverBase;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-/**
- * Created by liana on 4/23/17.
- */
+
 public class JoinUsTest extends BaseTest {
-    private HomePage homePage;
+    private JoinUs joinUs;
     private LoginPage loginPage;
     private JoinUsPage joinUsPage;
-    private CharityPage charityPage;
-    private AddEditJoinUsPage addEditJoinUsPage;
 
     protected void initializeMembers(){
-        homePage = new HomePage(webDriver);
         loginPage = new LoginPage(webDriver);
         joinUsPage = new JoinUsPage(webDriver);
-        charityPage = new CharityPage(webDriver);
-        addEditJoinUsPage = new AddEditJoinUsPage(webDriver);
     }
     protected void openPage(){
-        loginPage.login("admin", "789456");
+        HomePage homePage = loginPage.login(WebDriverBase.user);
         assertTrue(homePage.isVisible());
-        //homePage.openPage("App Management","Join us");
+        homePage.openJoinUs();
         assertTrue(joinUsPage.isVisible());
+    }
+    protected void createObjects(){
+        joinUs = JoinUsData.getJoinUs();
     }
 
-    @Test(dataProvider = "PTData", dataProviderClass = JoinUsData.class)
-    public void validateSearchWorks(JoinUs joinUs){
+    @Test
+    public void validateSearchWorks(){
         assertTrue(joinUsPage.searchOrganization(joinUs.getName()));
     }
-    @Test(dataProvider = "PTData",
-            dataProviderClass = JoinUsData.class)
-    public void validateOpenWorks(JoinUs joinUs){
+    @Test
+    public void validateOpenWorks(){
         String name = joinUs.getName();
         assertTrue(joinUsPage.searchOrganization(name));
-        joinUsPage.openOrganization(name);
+        CharityPage charityPage = joinUsPage.openOrganization(name);
         assertTrue(charityPage.isVisible());
         assertEquals(charityPage.getName(),name);
-       // assertEquals(,1);
     }
-    @Test(priority = 1, dataProvider = "PTData",
-            dataProviderClass = JoinUsData.class)
-    public void validateDeleteWorks(JoinUs joinUs){
+    @Test(priority = 1)
+    public void validateDeleteWorks(){
         String name = joinUs.getName();
         assertTrue(joinUsPage.searchOrganization(name));
-        joinUsPage.deleteOrganization(name);
+        while(joinUsPage.searchOrganization(name)) {
+            joinUsPage.deleteOrganization(name);
+        }
         assertFalse(joinUsPage.searchOrganization(name));
     }
-    @Test(priority = -1, dataProvider = "PTData",
-            dataProviderClass = JoinUsData.class)
-    public void validateAddWorks(JoinUs joinUs){
+    @Test(priority = -1)
+    public void validateAddWorks(){
         String name = joinUs.getName();
-        joinUsPage.createOrganization();
-        assertTrue(addEditJoinUsPage.isVisible());
-        addEditJoinUsPage.addJoinUs(joinUs);
+        AddEditJoinUsPage addPage = joinUsPage.createOrganization();
+        assertTrue(addPage.isVisible());
+        addPage.addJoinUs(joinUs);
         assertTrue(joinUsPage.isVisible());
         assertTrue(joinUsPage.searchOrganization(name));
     }
-    @Test(dataProvider = "NTData",
-            dataProviderClass = JoinUsData.class)
-    public void validateNoWrongInputsAdd(JoinUs joinUs){
-        joinUsPage.createOrganization();
-        assertTrue(addEditJoinUsPage.isVisible());
-        addEditJoinUsPage.addJoinUs(joinUs);
-        assertTrue(addEditJoinUsPage.isVisible());
+    //@Test//(dataProvider = "NTData", dataProviderClass = JoinUsData.class)
+    public void validateNoWrongInputsAdd(){
+        AddEditJoinUsPage addPage = joinUsPage.createOrganization();
+        assertTrue(addPage.isVisible());
+        addPage.addJoinUs(joinUs);
+        assertTrue(addPage.isVisible());
     }
-    @Test(dataProvider = "PTData", dataProviderClass = JoinUsData.class)
-    public void validateEditWorks(JoinUs joinUs){
+    @Test
+    public void validateEditWorks(){
         String oldName = joinUs.getName();
         String newName = joinUs.getName()+joinUs.getName();
         String name = newName;
         for (int i = 0; i < 2; ++i) {
-            joinUsPage.openOrganization(oldName);
+            CharityPage charityPage = joinUsPage.openOrganization(oldName);
             assertTrue(charityPage.isVisible());
-            assertEquals(charityPage.getName(), oldName);
-            // assertEquals(categoryPage.imageField.size(),1);
-            charityPage.editJoinUs();
-            assertTrue(addEditJoinUsPage.isVisible());
-            assertEquals(addEditJoinUsPage.getName(), oldName);
-            //check image
-            addEditJoinUsPage.clearNameField();
-            addEditJoinUsPage.setName(newName);
-            addEditJoinUsPage.saveChanges();
-            //change image
+            AddEditJoinUsPage addPage = charityPage.editJoinUs();
+            assertTrue(addPage.isVisible());
+            assertEquals(addPage.getName(), oldName);
+            addPage.setName(newName);
+            addPage.saveChanges();
             assertTrue(joinUsPage.isVisible());
             assertTrue(joinUsPage.searchOrganization(newName));
             newName = oldName;
             oldName = name;
         }
-
-
-
     }
-
-    @Test(dataProvider = "PTData", dataProviderClass = JoinUsData.class)
-    public void validateRightEditPageOpened(JoinUs joinUs){
+    @Test
+    public void validateRightEditPageOpened(){
         String name = joinUs.getName();
-        joinUsPage.openOrganization(name);
+        CharityPage charityPage = joinUsPage.openOrganization(name);
         assertTrue(charityPage.isVisible());
         assertEquals(charityPage.getName(),name);
-        // assertEquals(categoryPage.imageField.size(),1);
-        charityPage.editJoinUs();
-        assertTrue(addEditJoinUsPage.isVisible());
-        assertEquals(addEditJoinUsPage.getName(),name);
-        //check image
+        AddEditJoinUsPage addPage = charityPage.editJoinUs();
+        assertTrue(addPage.isVisible());
+        assertEquals(addPage.getName(),name);
     }
     @Test
     public void validateRightTitle(){}

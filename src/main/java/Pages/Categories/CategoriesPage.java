@@ -13,9 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-/**
- * Created by liana on 4/12/17.
- */
 public class CategoriesPage extends State {
     @FindBy(how = How.XPATH, using = CategoriesPageConst.CREATE_BUTTON)
     private WebElement createButton;
@@ -28,12 +25,15 @@ public class CategoriesPage extends State {
     @FindBy(how = How.XPATH, using = CategoriesPageConst.DELETE_BUTTONS)
     private List<WebElement> deleteButtons;
 
+    private WebDriver webDriver;
 
     public CategoriesPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
-    public void createCategory(){
+    public AddEditCategoryPage createCategory(){
             createButton.click();
+            return new AddEditCategoryPage(webDriver);
     }
     public boolean searchCategory(String name){
         searchField.sendKeys(name);
@@ -53,13 +53,14 @@ public class CategoriesPage extends State {
             }
         }
     }
-    public void openCategory(String name){
+    public CategoryPage openCategory(String name){
         for(WebElement category : categories){
             if(category.getText().equals(name)){
                 category.click();
                 break;
             }
         }
+        return new CategoryPage(webDriver);
     }
     public boolean isVisible(){
         return isElementPresent(createButton);

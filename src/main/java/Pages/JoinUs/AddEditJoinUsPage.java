@@ -1,13 +1,11 @@
 package Pages.JoinUs;
 
-import Pages.HBBusiness.AddEditHBBusinessPageConst;
-import Pages.HBBusiness.HBBusiness;
+
 import java.util.List;
 import Pages.State;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
@@ -16,9 +14,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.*;
 
-/**
- * Created by liana on 4/23/17.
- */
+
 public class AddEditJoinUsPage extends State {
     @FindBy(xpath = AddEditJoinUsPageConst.NAME_FIELD)
     private WebElement nameField;
@@ -33,7 +29,10 @@ public class AddEditJoinUsPage extends State {
     @FindBy(xpath = AddEditJoinUsPageConst.SAVE_BUTTON)
     private WebElement saveButton;
 
+    private WebDriver webDriver;
+
     public AddEditJoinUsPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
     public void addJoinUs(JoinUs joinUs){
@@ -43,6 +42,7 @@ public class AddEditJoinUsPage extends State {
         saveChanges();
     }
     public void setName(String name){
+        clearNameField();
         nameField.sendKeys(name);
     }
     public void setMainImage(String image) {
@@ -50,21 +50,25 @@ public class AddEditJoinUsPage extends State {
             File file = new File(System.getProperty("user.dir"), image);
             mainImageField.click();
             uploadFile(file.getAbsolutePath());
-            isElementEmpty(mainImage);
-        }
-    }
-    public void setSliderImages(String images) {
-        if(images != null) {
-            //for (int i = 0; i < images.size(); ++i) {
-                File file = new File(System.getProperty("user.dir"), images);
-                sliderImagesField.click();
-                uploadFile(file.getAbsolutePath());
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            isElementEmpty(sliderImages.get(0));
+        }
+    }
+    public void setSliderImages(List<String> images) {
+        if(images != null) {
+            for (String image:images) {
+                File file = new File(System.getProperty("user.dir"), image);
+                sliderImagesField.click();
+                uploadFile(file.getAbsolutePath());
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
     public String getName(){
@@ -78,22 +82,23 @@ public class AddEditJoinUsPage extends State {
         }
         return images;
     }
-
     public void clearNameField(){
         nameField.clear();
     }
+    public void clearMainImageField(){
 
-
-    public void saveChanges(){
-        saveButton.click();
     }
-    private void setClipboardData(String string) {
-        StringSelection stringSelection = new StringSelection(string);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+    public void clearSliderImageField(){
+
+    }
+    public JoinUsPage saveChanges(){
+        saveButton.click();
+        return new JoinUsPage(webDriver);
     }
     private void uploadFile(String fileLocation) {
         try {
-            setClipboardData(fileLocation);
+            StringSelection stringSelection = new StringSelection(fileLocation);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
             Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);

@@ -1,35 +1,26 @@
 package Test.HBBusinessTest;
 
 import Pages.HBBusiness.HBBusiness;
-import org.testng.annotations.DataProvider;
+import Test.parser.Parser;
+import WebDriverSupport.WebDriverBase;
+
+import java.util.List;
 
 
 public class HBBusinessPageData {
-    @DataProvider(name = "PTData")
-    public static Object[][] PTData() {
-        return new Object[][]{
-                {new HBBusiness() {{
-                    setName("auto_HBBusiness");
-                    setImage("image/coffee.jpeg");
-                }}}
-        };
-    }
-    @DataProvider(name = "NTData")
-    public static Object[][] NTData() {
-        return new Object[][]{
-                {new HBBusiness()},
-                {new HBBusiness(){{
-                    setImage("image/coffee.jpeg");}}},
-                {new HBBusiness(){{
-                    setName("auto_HBBusiness");
-                }}},
-                {new HBBusiness(){{
-                    setName("auto_HBBusiness");
-                }}},
-                {new HBBusiness(){{
-                    setName("auto_HBBusiness");
-                    setImage("image/non_existing_image");
-                }}}
-        };
+    private static HBBusiness hbBusiness;
+
+    public static HBBusiness getHbBusiness(){
+        if(hbBusiness == null){
+            hbBusiness = new HBBusiness();
+            List<List<String>> lst = Parser.parseFile(
+                    WebDriverBase.DATA_FILE, HBBusinessPageData.class.getSimpleName());
+            for(List<String> row:lst){
+                //TODO
+                hbBusiness.setName(row.get(0));
+                hbBusiness.setImage(row.get(1));
+            }
+        }
+        return hbBusiness;
     }
 }

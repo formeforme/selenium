@@ -28,18 +28,16 @@ public class AddEditHBBusinessPage extends State {
     @FindBy(xpath = AddEditHBBusinessPageConst.SAVE_BUTTON)
     private WebElement saveButton;
 
+    private WebDriver webDriver;
+
     public AddEditHBBusinessPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
 
     public void addHBBusiness(HBBusiness hbBusiness){
         setName(hbBusiness.getName());
         setImage(hbBusiness.getImage());
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         saveChanges();
     }
     public void setName(String name){
@@ -51,7 +49,7 @@ public class AddEditHBBusinessPage extends State {
             File file = new File(System.getProperty("user.dir"), image);
             uploadFile(file.getAbsolutePath());
         }
-        isElementPresent(imageRemoveButton);
+        isElementPresent(this.image);
     }
     public String getName(){
         return nameField.getAttribute("value");
@@ -65,14 +63,14 @@ public class AddEditHBBusinessPage extends State {
     public void clearImageField(){
         imageRemoveButton.click();
     }
-    public void saveChanges(){
+    public HBBusinessPage saveChanges(){
         saveButton.click();
+        return new HBBusinessPage(webDriver);
     }
     private void uploadFile(String fileLocation) {
         try {
             StringSelection stringSelection = new StringSelection(fileLocation);
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-           // setClipboardData(fileLocation);
             Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);

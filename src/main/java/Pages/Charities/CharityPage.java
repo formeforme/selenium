@@ -27,7 +27,10 @@ public class CharityPage extends State {
     @FindBy(how = How.XPATH, using = CharityPageConst.EDIT_BUTTON)
     private WebElement editButton;
 
+    private WebDriver webDriver;
+
     public CharityPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
 
@@ -43,8 +46,9 @@ public class CharityPage extends State {
     public String getLogo(){
         return logoField.getText();
     }
-    public void edit(){
+    public AddCharityPage edit(){
         editButton.click();
+        return new AddCharityPage(webDriver);
     }
     public boolean isVisible() {
         return isElementPresent(nameField);

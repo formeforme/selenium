@@ -6,9 +6,6 @@ import Pages.Login.User;
 import org.testng.annotations.DataProvider;
 
 
-/**
- * Created by liana on 4/15/17.
- */
 public class LoginPageData {
     @DataProvider(name = "PTData")
     public static Object[][] PTData() {

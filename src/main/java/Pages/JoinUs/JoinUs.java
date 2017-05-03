@@ -1,14 +1,12 @@
 package Pages.JoinUs;
 
+
 import java.util.List;
 
-/**
- * Created by liana on 4/14/17.
- */
 public class JoinUs {
-    String name;
-    String mainImage;
-    String sliderImages;
+    private String name;
+    private String mainImage;
+    private List<String> sliderImages;
 
     public String getName() {
         return name;
@@ -22,10 +20,10 @@ public class JoinUs {
     public void setMainImage(String mainImage) {
         this.mainImage = mainImage;
     }
-    public String getSliderImages() {
+    public List<String> getSliderImages() {
         return sliderImages;
     }
-    public void setSliderImages(String sliderImages) {
+    public void setSliderImages(List<String> sliderImages) {
         this.sliderImages = sliderImages;
     }
 }

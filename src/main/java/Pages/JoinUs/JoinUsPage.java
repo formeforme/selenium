@@ -9,9 +9,6 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
-/**
- * Created by liana on 4/10/17.
- */
 public class JoinUsPage extends State {
     @FindBy(xpath = JoinUsPageConst.CREATE_BUTTON)
     private WebElement createButton;
@@ -24,13 +21,18 @@ public class JoinUsPage extends State {
     @FindBy(xpath = JoinUsPageConst.DELETE_BUTTONS)
     private List<WebElement> deleteButtons;
 
+    private WebDriver webDriver;
+
     public JoinUsPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
-    public void createOrganization(){
+    public AddEditJoinUsPage createOrganization(){
         createButton.click();
+        return new AddEditJoinUsPage(webDriver);
     }
     public boolean searchOrganization(String name){
+        isElementPresent(searchField);
         searchField.sendKeys(name);
         searchButton.click();
         for(WebElement org : orgList){
@@ -48,13 +50,14 @@ public class JoinUsPage extends State {
             }
         }
     }
-    public void openOrganization(String name){
+    public CharityPage openOrganization(String name){
         for(WebElement org : orgList){
             if(org.getText().equals(name)){
                 org.click();
                 break;
             }
         }
+        return new CharityPage(webDriver);
     }
 
     public boolean isVisible(){

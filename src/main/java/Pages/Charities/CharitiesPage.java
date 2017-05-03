@@ -27,23 +27,28 @@ public class CharitiesPage extends State {
     @FindBy(how = How.XPATH, using = CharitiesPageConst.DELETE_BUTTONS)
     private List<WebElement> deleteButtons;
 
+    private WebDriver webDriver;
+
     public CharitiesPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
 
     public String getTitle(){
         return title.getText();
     }
-    public void createCharity(){
+    public AddCharityPage createCharity(){
         createButton.click();
+        return new AddCharityPage(webDriver);
     }
-    public void openCharity(String name){
+    public CharityPage openCharity(String name){
         for(WebElement org : organizations){
             if(org.getText().equals(name)){
                 org.click();
                 break;
             }
         }
+        return new CharityPage(webDriver);
     }
     public void deleteCharity(String name){
         for(int i = 0; i < organizations.size(); ++i) {
@@ -54,6 +59,7 @@ public class CharitiesPage extends State {
         }
     }
     public boolean searchCharity(String name){
+        isElementPresent(searchField);
         searchField.sendKeys(name);
         searchButton.click();
         for(WebElement org : organizations){

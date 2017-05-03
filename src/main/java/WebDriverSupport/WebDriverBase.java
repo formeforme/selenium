@@ -23,6 +23,7 @@ public class WebDriverBase {
     private static WebDriverBase driverInstance = new WebDriverBase();
     private final String PROPERTIES_FILE = "data/data.properties";
     public static User user;
+    public static final String DATA_FILE = "data/data.xlsx";
 
     public enum BROWSER {
         FIREFOX, CHROME
@@ -71,11 +72,8 @@ public class WebDriverBase {
                 webDriver.get(URL);
                 break;
             case FIREFOX:
-                System.setProperty("webdriver.gecko.driver","./driver/geckodriver");
-                DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-                capabilities.setCapability("marionette", true);
-               webDriver = new FirefoxDriver(capabilities);
-                //webDriver = new FirefoxDriver();
+                System.setProperty("webdriver.firefox.marionette","./driver/geckodriver");
+                webDriver = new FirefoxDriver();
                 webDriver.get(URL);
                 break;
         }

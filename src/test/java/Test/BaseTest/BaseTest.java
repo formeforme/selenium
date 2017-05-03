@@ -3,6 +3,8 @@ package Test.BaseTest;
 import WebDriverSupport.WebDriverBase;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 /**
@@ -13,7 +15,12 @@ public abstract class BaseTest {
     protected WebDriver webDriver;
     protected abstract void initializeMembers();
     protected abstract void openPage();
+    protected void createObjects(){};
 
+    @BeforeClass
+    protected void prepare(){
+        createObjects();
+    }
     @BeforeMethod
     protected void start(){
         startDriver();

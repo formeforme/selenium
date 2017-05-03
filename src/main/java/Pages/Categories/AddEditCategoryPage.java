@@ -12,9 +12,6 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-/**
- * Created by liana on 4/12/17.
- */
 public class AddEditCategoryPage extends State {
     @FindBy(how = How.XPATH, using = AddEditCategoryPageConst.NAME_FIELD)
     private WebElement nameField;
@@ -30,6 +27,7 @@ public class AddEditCategoryPage extends State {
     private WebElement image;
 
     private WebDriver webDriver;
+
     public AddEditCategoryPage(WebDriver webDriver){
         this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
@@ -74,21 +72,16 @@ public class AddEditCategoryPage extends State {
             freeButton.click();
         }
     }
-    public void saveChanges(){
+    public CategoriesPage saveChanges(){
         saveButton.click();
+        return new CategoriesPage(webDriver);
     }
-    private void setClipboardData(String string) {
-        //StringSelection is a class that can be used for copy and paste operations.
-        StringSelection stringSelection = new StringSelection(string);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-    }
+
     private void uploadFile(String fileLocation) {
         try {
-            //Setting clipboard with file location
-            setClipboardData(fileLocation);
-            //native key strokes for CTRL, V and ENTER keys
+            StringSelection stringSelection = new StringSelection(fileLocation);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
             Robot robot = new Robot();
-
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_V);

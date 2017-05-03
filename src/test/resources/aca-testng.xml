@@ -21,6 +21,7 @@
     <classes>
       <class name="Test.BaseTest.BaseTest"/>
       <class name="Test.LoginTest.LoginPageTest" />
+      <class name="Test.SubCategoriesTest.SubCategoryPageTest"/>
       <!--class name="Test.JoinUs.JoinUsTest"/-->
     </classes>
   </test>

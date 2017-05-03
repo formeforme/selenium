@@ -24,26 +24,4 @@ public abstract class State {
             return false;
         }
     }
-    public boolean areElementsPresent(List<WebElement> element){
-        WebDriver webDriver = WebDriverBase.getDriverInstance().getWebDriver();
-        WebDriverWait wait = new WebDriverWait(webDriver,8);
-        try{
-            wait.until(ExpectedConditions.visibilityOfAllElements(element));
-            return true;
-        } catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-    public boolean isElementEmpty(WebElement element){
-        WebDriver webDriver = WebDriverBase.getDriverInstance().getWebDriver();
-        WebDriverWait wait = new WebDriverWait(webDriver,8);
-        try{
-            wait.until(ExpectedConditions.attributeToBeNotEmpty(element,"innerHTML"));
-            return true;
-        } catch(Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
 }

@@ -1,6 +1,5 @@
 package Pages.ScratchAndWin;
 
-import Pages.BasePage;
 import Pages.State;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,18 +36,21 @@ public class ScratchAndWinPage extends State {
     public void setScratchAndWin(ScratchAndWin scratchAndWin){
         setPrice(scratchAndWin.getPrice());
         setImages(scratchAndWin.getImages());
+        finish();
     }
 
     public void setPrice(String price){
+        clearPriceField();
         priceField.sendKeys(price);
     }
     public String getPrice(){
-        return priceField.getText();
+        return priceField.getAttribute("value");
     }
     public void clearPriceField(){
         priceField.clear();
     }
     public void setImages(List<String> images){
+        clearImageField();
         for(String image:images){
             setImage(image);
         }
@@ -69,7 +71,7 @@ public class ScratchAndWinPage extends State {
     public List<String> getImages(){
         List<String> lst = new LinkedList<String>();
         for (WebElement image:images){
-            lst.add(image.getAttribute("src"));
+            lst.add(image.getAttribute("alt"));
         }
         return lst;
     }
@@ -79,7 +81,7 @@ public class ScratchAndWinPage extends State {
         }
     }
     public void removeImage(){
-
+        removeButtons.get(0).click();
     }
     public void finish(){
         finishButton.click();

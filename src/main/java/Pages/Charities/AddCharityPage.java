@@ -30,17 +30,22 @@ public class AddCharityPage extends State{
     private WebElement saveButton;
     @FindBy(how = How.XPATH, using = AddCharityPageConst.IMAGES)
     private WebElement images;
+    @FindBy(how = How.XPATH, using = AddCharityPageConst.REMOVE_BUTTON)
+    private WebElement removeButton;
+
+    private WebDriver webDriver;
 
     public AddCharityPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
 
-    public void addCharity(Organization organization){
+    public void addCharity(Charity organization){
         setName(organization.getName());
         setEmail(organization.getEmail());
         setInfo(organization.getInfo());
         setLogo(organization.getLogo());
-        save();
+        saveChanges();
     }
 
     public String getName(){
@@ -67,10 +72,14 @@ public class AddCharityPage extends State{
     }
     public void setLogo(String image){
         if(image != null) {
-            //for(String image : images){
             File file = new File(System.getProperty("user.dir"), image);
             logoField.click();
             uploadFile(file.getAbsolutePath());
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -83,23 +92,22 @@ public class AddCharityPage extends State{
     public void clearInfoField(){
         infoField.clear();
     }
-    //TODO
-    public void clearLogo(){}
+    public void clearLogo(){
+        removeButton.click();
+    }
 
-    public void save(){
+    public AddCharityPage saveChanges(){
         saveButton.click();
+        return new AddCharityPage(webDriver);
     }
     public boolean isVisible() {
         return isElementPresent(nameField);
     }
 
-    private void setClipboardData(String string) {
-        StringSelection stringSelection = new StringSelection(string);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-    }
     private void uploadFile(String fileLocation) {
         try {
-            setClipboardData(fileLocation);
+            StringSelection stringSelection = new StringSelection(fileLocation);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
             Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);
@@ -110,9 +118,6 @@ public class AddCharityPage extends State{
         } catch (Exception exp) {
             exp.printStackTrace();
         }
-    }
-    public boolean waitUntilImageLoaded(){
-        return isElementPresent(images);
     }
 
 }

@@ -8,103 +8,114 @@ import Pages.HomePage.HomePage;
 import Pages.Login.LoginPage;
 import Test.BaseTest.BaseTest;
 import WebDriverSupport.WebDriverBase;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
 
 
 public class HBBusinessPageTest extends BaseTest{
-    private HomePage homePage;
     private LoginPage loginPage;
-    private CategoryPage categoryPage;
+    private HBBusiness hbBusiness;
     private HBBusinessPage hbBusinessPage;
-    private AddEditHBBusinessPage addEditHBBusinessPage;
 
+    protected void createObjects(){
+        hbBusiness = HBBusinessPageData.getHbBusiness();
+    }
     protected void initializeMembers(){
-        homePage = new HomePage(webDriver);
         loginPage = new LoginPage(webDriver);
-        categoryPage = new CategoryPage(webDriver);
         hbBusinessPage = new HBBusinessPage(webDriver);
-        addEditHBBusinessPage = new AddEditHBBusinessPage(webDriver);
     }
     protected void openPage(){
-        loginPage.login(WebDriverBase.user);
+        HomePage homePage = loginPage.login(WebDriverBase.user);
         assertTrue(homePage.isVisible());
         homePage.openHBBusiness();
         assertTrue(hbBusinessPage.isVisible());
     }
 
-    @Test(priority = -1, dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
-    void validateAddWorks(HBBusiness hbBusiness){
-        hbBusinessPage.addHBBusiness();
-        assertTrue(addEditHBBusinessPage.isVisible());
-        addEditHBBusinessPage.addHBBusiness(hbBusiness);
+    @Test(priority = -1)
+    void validateCreateWorks(){
+        String name = hbBusiness.getName();
+        AddEditHBBusinessPage addPage = hbBusinessPage.addHBBusiness();
+        assertTrue(addPage.isVisible());
+        addPage.addHBBusiness(hbBusiness);
         assertTrue(hbBusinessPage.isVisible());
-        assertTrue(hbBusinessPage.searchHBBusiness(hbBusiness.getName()));
+        assertTrue(hbBusinessPage.searchHBBusiness(name));
     }
-    @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
-    void validateSearchWorks(HBBusiness hbBusiness){
-        assertTrue(hbBusinessPage.searchHBBusiness(hbBusiness.getName()));
-    }
-    @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
-    void validateOpenWorks(HBBusiness hbBusiness){
+    @Test(priority = 1)
+    void validateDeleteWorks(){
         String name = hbBusiness.getName();
         assertTrue(hbBusinessPage.searchHBBusiness(name));
-        hbBusinessPage.openHBBusiness(name);
-        assertTrue(categoryPage.isVisible());
-        assertEquals(categoryPage.getName(),name);
-        //assertEquals(categoryPage.imageField.size(),hbBusiness.getImage());
-    }
-    @Test(priority = 1, dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
-    void validateDeleteWorks(HBBusiness hbBusiness){
-        String name = hbBusiness.getName();
-        assertTrue(hbBusinessPage.searchHBBusiness(name));
-        hbBusinessPage.deleteHBBusiness(name);
+        while (hbBusinessPage.searchHBBusiness(name)) {
+            hbBusinessPage.deleteHBBusiness(name);
+        }
         assertFalse(hbBusinessPage.searchHBBusiness(name));
     }
-    @Test(dataProvider = "NTData", dataProviderClass = HBBusinessPageData.class)
-    void validateNoWrongInputsAdd(HBBusiness hbBusiness){
-        hbBusinessPage.addHBBusiness();
-        assertTrue(addEditHBBusinessPage.isVisible());
-        addEditHBBusinessPage.addHBBusiness(hbBusiness);
-        assertTrue(addEditHBBusinessPage.isVisible());
-    }
-    @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
-    void validateRightEditPageOpened(HBBusiness hbBusiness){
+    @Test
+    void validateSearchWorks(){
         String name = hbBusiness.getName();
-        hbBusinessPage.openHBBusiness(name);
+        assertTrue(hbBusinessPage.searchHBBusiness(name));
+    }
+    @Test
+    void validateOpenWorks(){
+        String name = hbBusiness.getName();
+        assertTrue(hbBusinessPage.searchHBBusiness(name));
+        CategoryPage categoryPage = hbBusinessPage.openHBBusiness(name);
+        assertTrue(categoryPage.isVisible());
+        assertEquals(categoryPage.getName(),name);
+    }
+    @Test
+    void validateNameFieldIsNotEmpty(){
+        AddEditHBBusinessPage addPage = hbBusinessPage.addHBBusiness();
+        assertTrue(addPage.isVisible());
+        addPage.setName(hbBusiness.getName());
+        addPage.saveChanges();
+        assertTrue(addPage.isVisible());
+    }
+    @Test
+    void validateImageFieldIsNotEmpty(){
+        AddEditHBBusinessPage addPage = hbBusinessPage.addHBBusiness();
+        assertTrue(addPage.isVisible());
+        addPage.setImage(hbBusiness.getImage());
+        addPage.saveChanges();
+        assertTrue(addPage.isVisible());
+    }
+    @Test
+    void validateRightEditPageOpened(){
+        String name = hbBusiness.getName();
+        CategoryPage categoryPage = hbBusinessPage.openHBBusiness(name);
         assertTrue(categoryPage.isVisible());
         String image = categoryPage.getImage();
-        categoryPage.editHBBusiness();
-        assertTrue(addEditHBBusinessPage.isVisible());
-        assertEquals(addEditHBBusinessPage.getName(),name);
-        assertTrue(image.contains(addEditHBBusinessPage.getImage()));
+        AddEditHBBusinessPage editPage = categoryPage.editHBBusiness();
+        assertTrue(editPage.isVisible());
+        assertEquals(editPage.getName(),name);
+        assertTrue(image.contains(editPage.getImage()));
     }
-    @Test(dataProvider = "PTData", dataProviderClass = HBBusinessPageData.class)
-    void validateEditWorks(HBBusiness hbBusiness){
+    @Test
+    void validateEditWorks(){
         String oldName = hbBusiness.getName();
         String newName = hbBusiness.getName()+hbBusiness.getName();
         String name = newName;
         for(int i = 0; i<2; ++i) {
-            hbBusinessPage.openHBBusiness(oldName);
+            CategoryPage categoryPage = hbBusinessPage.openHBBusiness(oldName);
             assertTrue(categoryPage.isVisible());
-            categoryPage.editHBBusiness();
-            assertTrue(addEditHBBusinessPage.isVisible());
-            addEditHBBusinessPage.clearNameField();
-            addEditHBBusinessPage.setName(newName);
-            addEditHBBusinessPage.saveChanges();
+            AddEditHBBusinessPage editPage = categoryPage.editHBBusiness();
+            assertTrue(editPage.isVisible());
+            editPage.clearNameField();
+            editPage.setName(newName);
+            editPage.saveChanges();
             assertTrue(hbBusinessPage.isVisible());
             assertTrue(hbBusinessPage.searchHBBusiness(newName));
             newName = oldName;
             oldName = name;
         }
     }
-    //@Test
+    /*@Test
     void validateRightTitle(){}
-
+    @Test(dataProvider = "NTData", dataProviderClass = HBBusinessPageData.class)
+    void validateNoWrongInputsAdd(HBBusiness hbBusiness){
+        AddEditHBBusinessPage addPage = hbBusinessPage.addHBBusiness();
+        assertTrue(addPage.isVisible());
+        addPage.addHBBusiness(hbBusiness);
+        assertTrue(addPage.isVisible());
+    }*/
 }

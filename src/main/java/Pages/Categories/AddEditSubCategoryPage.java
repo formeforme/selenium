@@ -35,9 +35,9 @@ public class AddEditSubCategoryPage extends State {
         setName(subCategory.getName());
         setImage(subCategory.getImages());
         setType(subCategory.getIsShown());
-        save();
+        saveChanges();
     }
-    public void save(){
+    public void saveChanges(){
         saveButton.click();
     }
     public void setName(String name){
@@ -45,6 +45,9 @@ public class AddEditSubCategoryPage extends State {
     }
     public String getName(){
         return nameField.getAttribute("value");
+    }
+    public void clearNameField(){
+        nameField.clear();
     }
     private void setImage(List<String> images) {
         for(String image : images){

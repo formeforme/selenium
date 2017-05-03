@@ -23,7 +23,10 @@ public class CategoryPage extends State{
     @FindBy(xpath = CategoryPageConst.EDIT_BUTTON)
     private WebElement editButton;
 
+    private WebDriver webDriver;
+
     public CategoryPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
 
@@ -33,8 +36,9 @@ public class CategoryPage extends State{
     public String getImage(){
         return imageField.getAttribute("src");
     }
-    public void editHBBusiness(){
+    public AddEditHBBusinessPage editHBBusiness(){
         editButton.click();
+        return new AddEditHBBusinessPage(webDriver);
     }
     public boolean isVisible() {
         return isElementPresent(editButton);

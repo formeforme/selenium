@@ -4,9 +4,9 @@ package Pages.HBBusiness;
  * Created by liana on 4/14/17.
  */
 public class HBBusinessPageConst {
-    public static final String ADD_BUTTON = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[1]/a/button";
-    public static final String SEARCH_FIELD = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[3]/form/div[2]/input";
-    public static final String SEARCH_BUTTON = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[2]/div[3]/form/div[2]/span/button";
-    public static final String ITEMS = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[3]/table/tbody/tr/td[1]/a";
-    public static final String DELETE_BUTTONS = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[3]/table/tbody/tr/td[2]/a";
+    public static final String ADD_BUTTON = "//a[contains(@href,'addHbBusiness')]";
+    public static final String SEARCH_FIELD = "//input[@name='data[HBBusiness][search]']";
+    public static final String SEARCH_BUTTON = "//button[@class='btn b-a white']";
+    public static final String ITEMS = "//a[contains(@href,'viewHbBusiness')]";
+    public static final String DELETE_BUTTONS = "//a[contains(@href,'deleteHbBusiness')]";
 }

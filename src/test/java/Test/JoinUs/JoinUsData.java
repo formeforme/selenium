@@ -1,27 +1,34 @@
 package Test.JoinUs;
 
+
 import Pages.HBBusiness.HBBusiness;
 import Pages.JoinUs.JoinUs;
-import org.testng.annotations.DataProvider;
+import Test.HBBusinessTest.HBBusinessPageData;
+import Test.parser.Parser;
+import WebDriverSupport.WebDriverBase;
 
-/**
- * Created by liana on 4/23/17.
- */
+import java.util.LinkedList;
+import java.util.List;
+
 public class JoinUsData {
-    @DataProvider(name = "PTData")
-    public static Object[][] PTData() {
-        return new Object[][]{
-                {new JoinUs() {{
-                    setName("auto_JoinUs");
-                    setMainImage("image/coffee.jpeg");
-                    setSliderImages("image/coffee.jpeg");
-                }}}
-        };
+    private static JoinUs joinUs;
+    public static JoinUs getJoinUs(){
+        if(joinUs == null){
+            joinUs = new JoinUs();
+            List<List<String>> lst = Parser.parseFile(
+                    WebDriverBase.DATA_FILE, JoinUsData.class.getSimpleName());
+            for(List<String> row:lst){
+                //TODO
+                joinUs.setName(row.get(0));
+                joinUs.setMainImage((row.get(1)));
+                List<String> images = new LinkedList<String>();
+                images.add(row.get(2));
+                images.add(row.get(3));
+                images.add(row.get(4));
+                joinUs.setSliderImages(images);
+            }
+        }
+        return joinUs;
     }
-    @DataProvider(name = "NTData")
-    public static Object[][] NTData() {
-        return new Object[][]{
-                {new JoinUs()},
-        };
-    }
+
 }

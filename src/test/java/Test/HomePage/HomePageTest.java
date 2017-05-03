@@ -1,27 +1,14 @@
 package Test.HomePage;
 
-import Pages.BasePage;
 import Pages.Categories.CategoriesPage;
-import Pages.HBBusiness.AddEditHBBusinessPage;
-import Pages.HBBusiness.CategoryPage;
 import Pages.HBBusiness.HBBusinessPage;
 import Pages.HomePage.HomePage;
-import Pages.JoinUs.JoinUs;
 import Pages.JoinUs.JoinUsPage;
 import Pages.Login.LoginPage;
-import Pages.State;
 import Test.BaseTest.BaseTest;
 import WebDriverSupport.WebDriverBase;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.*;
-
-import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 

@@ -1,5 +1,6 @@
 package Pages.Login;
 
+import Pages.HomePage.HomePage;
 import Pages.State;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +20,10 @@ public class LoginPage extends State {
     @FindBy(xpath = LoginPageConst.LOGIN_BUTTON)
     private WebElement loginButton;
 
+    private WebDriver webDriver;
+
     public LoginPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
     }
     public void login(String username, String password){
@@ -29,19 +33,19 @@ public class LoginPage extends State {
         setPassword(password);
         pressloginButton();
     }
-    public void login(User user){
+    public HomePage login(User user){
         clearUsernameField();
         clearPasswordField();
         setUsername(user.getUsername());
         setPassword(user.getPassword());
-        pressloginButton();
+        return pressloginButton();
     }
 
     public void setUsername(String username){
-        usernameField.sendKeys(String.valueOf(username));
+        usernameField.sendKeys(username);
     }
     public void setPassword(String password){
-        passwordField.sendKeys(String.valueOf(password));
+        passwordField.sendKeys(password);
     }
     public String getUsername(){
         return usernameField.getText();
@@ -55,8 +59,9 @@ public class LoginPage extends State {
     public void clearPasswordField(){
         passwordField.clear();
     }
-    public void pressloginButton(){
+    public HomePage pressloginButton(){
         loginButton.click();
+        return new HomePage(webDriver);
     }
 
     public boolean isVisible(){

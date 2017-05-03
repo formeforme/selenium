@@ -83,11 +83,11 @@ public class HomePage extends State {
         menuScratchAndWin.click();
         return new ScratchAndWinPage(webDriver);
     }
-  /*  public CharitiesPage openCharity(){
+    public CharitiesPage openCharity(){
         menuCharities.click();
         return new CharitiesPage(webDriver);
     }
-    public AllUsersPage openAllUsers(){
+  /*  public AllUsersPage openAllUsers(){
         menuUsers.click();
         isElementPresent(menuAllUsers);
         menuAllUsers.click();

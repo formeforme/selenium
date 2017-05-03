@@ -9,9 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-/**
- * Created by liana on 4/13/17.
- */
+
 public class CategoryPage extends State {
     @FindBy(how = How.XPATH, using = CategoryPageConst.NAME_FIELD)
     private WebElement nameField;
@@ -28,8 +26,10 @@ public class CategoryPage extends State {
     @FindBy(how = How.XPATH, using = CategoryPageConst.DELETE_SUBCATEGORY_BUTTON)
     private List<WebElement> deleteSubCategoryButton;
 
+    private WebDriver webDriver;
 
     public CategoryPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
     public String getName(){
@@ -38,8 +38,9 @@ public class CategoryPage extends State {
     public String getImage(){
         return imageField.getAttribute("src");
     }
-    public void editCategory(){
+    public AddEditCategoryPage editCategory(){
         editButton.click();
+        return new AddEditCategoryPage(webDriver);
     }
 
     public void createSubCategory(){
