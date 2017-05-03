@@ -36,6 +36,7 @@ public class CategoriesPage extends State {
             return new AddEditCategoryPage(webDriver);
     }
     public boolean searchCategory(String name){
+        isElementPresent(searchField);
         searchField.sendKeys(name);
         searchButton.click();
         for(WebElement category : categories){

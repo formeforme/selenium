@@ -11,36 +11,44 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by liana on 4/13/17.
- */
+
 public class AddEditSubCategoryPage extends State {
     @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.IMAGE_FIELD)
-    public WebElement imageField;
+    private WebElement imageField;
     @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.NAME_FIELD)
-    public WebElement nameField;
+    private WebElement nameField;
     @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.YES_RADIO_BUTTON)
-    public WebElement yesRadioButton;
+    private WebElement yesRadioButton;
     @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.NO_RADIO_BUTTON)
-    public WebElement noRadioButton;
+    private WebElement noRadioButton;
     @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.SAVE_BUTTON)
-    public WebElement saveButton;
+    private WebElement saveButton;
+    @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.IMAGES)
+    private List<WebElement> images;
+    @FindBy(how = How.XPATH, using = AddEditSubCategoryPageConst.IMAGES)
+    private List<WebElement> removeButtons;
+
+    private WebDriver webDriver;
 
     public AddEditSubCategoryPage(WebDriver webDriver){
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver,this);
     }
-    public void addSubCategory(SubCategory subCategory){
+    public CategoryPage addSubCategory(SubCategory subCategory){
         setName(subCategory.getName());
-        setImage(subCategory.getImages());
+        setImages(subCategory.getImages());
         setType(subCategory.getIsShown());
-        saveChanges();
+        return saveChanges();
     }
-    public void saveChanges(){
+    public CategoryPage saveChanges(){
         saveButton.click();
+        return new CategoryPage(webDriver);
     }
     public void setName(String name){
+        clearNameField();
         nameField.sendKeys(name);
     }
     public String getName(){
@@ -49,7 +57,8 @@ public class AddEditSubCategoryPage extends State {
     public void clearNameField(){
         nameField.clear();
     }
-    private void setImage(List<String> images) {
+    public void setImages(List<String> images) {
+        clearImageField();
         for(String image : images){
             File file = new File(System.getProperty("user.dir"), image);
             System.out.println(file.getAbsolutePath());
@@ -62,25 +71,30 @@ public class AddEditSubCategoryPage extends State {
             }
         }
     }
-    private void setType(boolean isShown){
+    public List<String> getImages(){
+        List<String> lst = new LinkedList<String>();
+        for(WebElement image:images){
+            lst.add(image.getAttribute("alt"));
+        }
+        return lst;
+    }
+    public void clearImageField(){
+        for(WebElement button:removeButtons){
+            button.click();
+        }
+    }
+    public void setType(boolean isShown){
         if(isShown){
             yesRadioButton.click();
         } else {
             noRadioButton.click();
         }
     }
-    private void setClipboardData(String string) {
-        //StringSelection is a class that can be used for copy and paste operations.
-        StringSelection stringSelection = new StringSelection(string);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-    }
     private void uploadFile(String fileLocation) {
         try {
-            //Setting clipboard with file location
-            setClipboardData(fileLocation);
-            //native key strokes for CTRL, V and ENTER keys
+            StringSelection stringSelection = new StringSelection(fileLocation);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
             Robot robot = new Robot();
-
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_V);

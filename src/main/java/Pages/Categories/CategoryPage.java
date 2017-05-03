@@ -42,17 +42,18 @@ public class CategoryPage extends State {
         editButton.click();
         return new AddEditCategoryPage(webDriver);
     }
-
-    public void createSubCategory(){
+    public AddEditSubCategoryPage createSubCategory(){
         createSubCategoryButton.click();
+        return new AddEditSubCategoryPage(webDriver);
     }
-    public void editSubCategory(String name){
+    public AddEditSubCategoryPage editSubCategory(String name){
         for(int i = 0; i < subCategories.size(); ++i) {
             if(subCategories.get(i).getText().contains(name)){
                 editSubCategoryButton.get(i).click();
                 break;
             }
         }
+        return new AddEditSubCategoryPage(webDriver);
     }
     public void deleteSubCategory(String name){
         for(int i = 0; i < subCategories.size(); ++i) {

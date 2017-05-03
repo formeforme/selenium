@@ -2,9 +2,6 @@ package Pages.Categories;
 
 import java.util.List;
 
-/**
- * Created by liana on 4/13/17.
- */
 public class SubCategory {
     private String name;
     private List<String> images;//TODO

@@ -1,5 +1,4 @@
 Pages/Categories/Category.class
-Pages/BasePage.class
 WebDriverSupport/WebDriverBase.class
 Pages/Charities/CharitiesPage.class
 Pages/Users/EditInfoPageXPath.class
@@ -9,7 +8,6 @@ WebDriverSupport/WebDriverBase$1.class
 Pages/Categories/SubCategory.class
 Pages/HBBusiness/HBBusinessPageConst.class
 Pages/ScratchAndWin/ScratchAndWinPageConst.class
-Pages/Charities/Organization.class
 Pages/JoinUs/JoinUsPage.class
 Pages/Categories/AddEditCategoryPageConst.class
 Pages/Categories/CategoryPage.class

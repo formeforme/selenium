@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="40.222" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="857.87" tests="47" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2017.1"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -60,9 +60,51 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="validateFieldCheckIsDone" classname="Test.LoginTest.LoginPageTest" time="1.959"/>
-  <testcase name="validateFieldCheckIsDone" classname="Test.LoginTest.LoginPageTest" time="1.873"/>
-  <testcase name="validateFieldCheckIsDone" classname="Test.LoginTest.LoginPageTest" time="1.948"/>
-  <testcase name="validateFieldCheckIsDone" classname="Test.LoginTest.LoginPageTest" time="1.853"/>
-  <testcase name="validateLoginWorks" classname="Test.LoginTest.LoginPageTest" time="2.635"/>
+  <testcase name="validateCreateWorks" classname="Test.CharitiesTest.CharitiesPageTest" time="9.438"/>
+  <testcase name="createScratchAndWin" classname="Test.ScratchAndWinTest.ScratchAndWinPageTest" time="41.482"/>
+  <testcase name="checkTitle" classname="Test.FirstPage.FirstPageTest" time="0.02"/>
+  <testcase name="validateCorrectPage" classname="Test.FirstPage.FirstPageTest" time="0.121"/>
+  <testcase name="openCategoryPage" classname="Test.HomePage.HomePageTest" time="1.336"/>
+  <testcase name="openHBBusinessPage" classname="Test.HomePage.HomePageTest" time="1.284"/>
+  <testcase name="openJoinUsPage" classname="Test.HomePage.HomePageTest" time="1.791"/>
+  <testcase name="openScratchAndWinPage" classname="Test.HomePage.HomePageTest" time="0"/>
+  <testcase name="validateLogoutWorks" classname="Test.HomePage.HomePageTest" time="1.128"/>
+  <testcase name="validateEditWorks" classname="Test.CharitiesTest.CharitiesPageTest" time="13.573"/>
+  <testcase name="validateOpenWorks" classname="Test.CharitiesTest.CharitiesPageTest" time="4.524"/>
+  <testcase name="validateRightEditPageOpened" classname="Test.CharitiesTest.CharitiesPageTest" time="4.994"/>
+  <testcase name="validateRightTitle" classname="Test.CharitiesTest.CharitiesPageTest" time="0"/>
+  <testcase name="validateSearchWorks" classname="Test.CharitiesTest.CharitiesPageTest" time="1.425"/>
+  <testcase name="validateImageFieldIsNotEmpty" classname="Test.ScratchAndWinTest.ScratchAndWinPageTest" time="5.368"/>
+  <testcase name="validatePriceFieldIsNotEmpty" classname="Test.ScratchAndWinTest.ScratchAndWinPageTest" time="37.306"/>
+  <testcase name="validateDeleteWorks" classname="Test.CharitiesTest.CharitiesPageTest" time="9.008"/>
+  <testcase name="validateAddWorks" classname="Test.CategoriesTest.CategoriesPageTest" time="7.638"/>
+  <testcase name="validateCreateWorks" classname="Test.HBBusinessTest.HBBusinessPageTest" time="6.204"/>
+  <testcase name="validateEditWorks" classname="Test.CategoriesTest.CategoriesPageTest" time="13.645"/>
+  <testcase name="validateOpenWorks" classname="Test.CategoriesTest.CategoriesPageTest" time="5.111"/>
+  <testcase name="validateRightEditPageOpened" classname="Test.CategoriesTest.CategoriesPageTest" time="5.555"/>
+  <testcase name="validateSearchWorks" classname="Test.CategoriesTest.CategoriesPageTest" time="1.223"/>
+  <testcase name="validateEditWorks" classname="Test.HBBusinessTest.HBBusinessPageTest" time="11.877"/>
+  <testcase name="validateImageFieldIsNotEmpty" classname="Test.HBBusinessTest.HBBusinessPageTest" time="3.679"/>
+  <testcase name="validateNameFieldIsNotEmpty" classname="Test.HBBusinessTest.HBBusinessPageTest" time="2.125"/>
+  <testcase name="validateOpenWorks" classname="Test.HBBusinessTest.HBBusinessPageTest" time="4.115"/>
+  <testcase name="validateRightEditPageOpened" classname="Test.HBBusinessTest.HBBusinessPageTest" time="4.511"/>
+  <testcase name="validateSearchWorks" classname="Test.HBBusinessTest.HBBusinessPageTest" time="1.442"/>
+  <testcase name="validateDeleteWorks" classname="Test.CategoriesTest.CategoriesPageTest" time="5.346"/>
+  <testcase name="validateDeleteWorks" classname="Test.HBBusinessTest.HBBusinessPageTest" time="6.556"/>
+  <testcase name="addSubCategory" classname="Test.SubCategoriesTest.SubCategoryPageTest" time="11.083"/>
+  <testcase name="validateAddWorks" classname="Test.JoinUs.JoinUsTest" time="18.429"/>
+  <testcase name="editSubCategory" classname="Test.SubCategoriesTest.SubCategoryPageTest" time="8.021"/>
+  <testcase name="validateRightEditSubCategoryPage" classname="Test.SubCategoriesTest.SubCategoryPageTest" time="3.467"/>
+  <testcase name="validateEditWorks" classname="Test.JoinUs.JoinUsTest" time="13.371"/>
+  <testcase name="validateOpenWorks" classname="Test.JoinUs.JoinUsTest" time="4.562"/>
+  <testcase name="validateRightEditPageOpened" classname="Test.JoinUs.JoinUsTest" time="4.508"/>
+  <testcase name="validateRightTitle" classname="Test.JoinUs.JoinUsTest" time="0"/>
+  <testcase name="validateSearchWorks" classname="Test.JoinUs.JoinUsTest" time="1.421"/>
+  <testcase name="deleteSubCategory" classname="Test.SubCategoriesTest.SubCategoryPageTest" time="0.321"/>
+  <testcase name="validateDeleteWorks" classname="Test.JoinUs.JoinUsTest" time="10.369"/>
+  <testcase name="validateFieldCheckIsDone" classname="Test.LoginTest.LoginPageTest" time="0.831"/>
+  <testcase name="validateFieldCheckIsDone" classname="Test.LoginTest.LoginPageTest" time="1.677"/>
+  <testcase name="validateFieldCheckIsDone" classname="Test.LoginTest.LoginPageTest" time="2.367"/>
+  <testcase name="validateFieldCheckIsDone" classname="Test.LoginTest.LoginPageTest" time="0.849"/>
+  <testcase name="validateLoginWorks" classname="Test.LoginTest.LoginPageTest" time="2.729"/>
 </testsuite>

@@ -16,6 +16,7 @@ public abstract class BaseTest {
     protected abstract void initializeMembers();
     protected abstract void openPage();
     protected void createObjects(){};
+    protected void deleteObjects(){};
 
     @BeforeClass
     protected void prepare(){
@@ -34,6 +35,7 @@ public abstract class BaseTest {
     }
     @AfterMethod
     protected void finish(){
+//        deleteObjects();
         webDriverBase.close();
     }
 }

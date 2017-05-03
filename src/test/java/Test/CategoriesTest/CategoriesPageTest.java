@@ -54,8 +54,9 @@ public class CategoriesPageTest extends BaseTest{
     @Test(priority = 1)
     void validateDeleteWorks(){
         String name = category.getName();
-        assertTrue(categoriesPage.searchCategory(name));
-        categoriesPage.deleteCategory(name);
+        while (categoriesPage.searchCategory(name)) {
+            categoriesPage.deleteCategory(name);
+        }
         assertFalse(categoriesPage.searchCategory(name));
     }
    // @Test(dataProvider = "NTData", dataProviderClass = HBBusinessPageData.class)

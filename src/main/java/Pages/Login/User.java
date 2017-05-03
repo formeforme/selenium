@@ -1,8 +1,6 @@
 package Pages.Login;
 
-/**
- * Created by liana on 4/22/17.
- */
+
 public class User {
     private String username;
     private String password;
