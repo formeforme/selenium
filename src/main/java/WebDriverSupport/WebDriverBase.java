@@ -4,26 +4,20 @@ import Pages.Login.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * Created by liana on 4/7/17.
- */
 public class WebDriverBase {
-    private static WebDriver webDriver;
     private String URL;
     private BROWSER executeBrowser;
+    private static WebDriver webDriver;
     private static WebDriverBase driverInstance = new WebDriverBase();
     private final String PROPERTIES_FILE = "data/data.properties";
-    public static User user;
     public static final String DATA_FILE = "data/data.xlsx";
+    public static User user;
 
     public enum BROWSER {
         FIREFOX, CHROME

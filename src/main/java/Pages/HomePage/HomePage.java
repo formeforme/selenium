@@ -5,6 +5,7 @@ import Pages.Charities.CharitiesPage;
 import Pages.HBBusiness.HBBusinessPage;
 import Pages.JoinUs.JoinUsPage;
 import Pages.Login.LoginPage;
+import Pages.MerchantsPage.AllMerchantsPage;
 import Pages.ScratchAndWin.ScratchAndWinPage;
 import Pages.State;
 import org.openqa.selenium.WebDriver;
@@ -87,6 +88,12 @@ public class HomePage extends State {
         menuCharities.click();
         return new CharitiesPage(webDriver);
     }
+    public AllMerchantsPage openAllMerchants(){
+        menuMerchantsAndVouchers.click();
+        isElementPresent(menuAllMerchants);
+        menuAllMerchants.click();
+        return new AllMerchantsPage(webDriver);
+    }
   /*  public AllUsersPage openAllUsers(){
         menuUsers.click();
         isElementPresent(menuAllUsers);
@@ -105,23 +112,18 @@ public class HomePage extends State {
         menuNonExecutives.click();
         return new NonExecutivesPage(webDriver);
     }
-    public AllMerchantsPage openAllMerchants(){
-        menuMerchantsAndVouchers.click();
-        isElementPresent(menuAllMerchants);
-        menuAllMerchants.click();
-        return AllMerchantsPage(webDriver);
-    }
+
     public ActiveMerchantsPage openActiveMerchants(){
         menuMerchantsAndVouchers.click();
         isElementPresent(menuActiveMerchants);
         menuActiveMerchants.click();
-        return ActiveMerchantsPage(webDriver);
+        return new ActiveMerchantsPage(webDriver);
     }
     public InactiveMerchantsPage openInactiveMerchants(){
         menuMerchantsAndVouchers.click();
         isElementPresent(menuInactiveMerchants);
         menuInactiveMerchants.click();
-        return InactiveMerchantsPage(webDriver);
+        return new InactiveMerchantsPage(webDriver);
     }
 */
 

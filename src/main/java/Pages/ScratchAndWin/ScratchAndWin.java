@@ -2,9 +2,6 @@ package Pages.ScratchAndWin;
 
 import java.util.List;
 
-/**
- * Created by liana on 4/30/17.
- */
 public class ScratchAndWin {
     private String price;
     private List<String> images;

@@ -9,9 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by liana on 4/7/17.
- */
 public class LoginPage extends State {
     @FindBy(xpath = LoginPageConst.USERNAME_FIELD)
     private WebElement usernameField;

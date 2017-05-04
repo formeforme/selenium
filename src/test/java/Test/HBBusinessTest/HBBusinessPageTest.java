@@ -31,7 +31,6 @@ public class HBBusinessPageTest extends BaseTest{
         homePage.openHBBusiness();
         assertTrue(hbBusinessPage.isVisible());
     }
-
     @Test(priority = -1)
     void validateCreateWorks(){
         String name = hbBusiness.getName();
