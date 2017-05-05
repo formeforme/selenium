@@ -12,9 +12,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-/**
- * Created by liana on 4/14/17.
- */
 public class CategoryPage extends State{
     @FindBy(xpath = CategoryPageConst.NAME_FIELD)
     private WebElement nameField;

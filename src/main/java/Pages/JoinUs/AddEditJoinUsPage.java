@@ -1,6 +1,7 @@
 package Pages.JoinUs;
 
 
+import java.awt.event.InputEvent;
 import java.util.List;
 import Pages.State;
 import org.openqa.selenium.WebDriver;
@@ -43,7 +44,7 @@ public class AddEditJoinUsPage extends State {
     }
     public void setName(String name){
         clearNameField();
-        nameField.sendKeys(name);
+        nameField.sendKeys(String.valueOf(name));
     }
     public void setMainImage(String image) {
         if(image != null) {
@@ -100,10 +101,12 @@ public class AddEditJoinUsPage extends State {
             StringSelection stringSelection = new StringSelection(fileLocation);
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
             Robot robot = new Robot();
+            robot.mousePress(InputEvent.BUTTON1_MASK);
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.setAutoDelay(2000);
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
         } catch (Exception exp) {

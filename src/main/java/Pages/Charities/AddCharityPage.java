@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
@@ -62,13 +63,13 @@ public class AddCharityPage extends State{
     }
 
     public void setName(String name){
-        nameField.sendKeys(name);
+        nameField.sendKeys(String.valueOf(name));
     }
     public void setEmail(String email){
-        emailField.sendKeys(email);
+        emailField.sendKeys(String.valueOf(email));
     }
     public void setInfo(String info){
-        infoField.sendKeys(info);
+        infoField.sendKeys(String.valueOf(info));
     }
     public void setLogo(String image){
         if(image != null) {
@@ -82,7 +83,6 @@ public class AddCharityPage extends State{
             }
         }
     }
-
     public void clearNameField(){
         nameField.clear();
     }
@@ -95,7 +95,6 @@ public class AddCharityPage extends State{
     public void clearLogo(){
         removeButton.click();
     }
-
     public AddCharityPage saveChanges(){
         saveButton.click();
         return new AddCharityPage(webDriver);
@@ -109,10 +108,12 @@ public class AddCharityPage extends State{
             StringSelection stringSelection = new StringSelection(fileLocation);
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
             Robot robot = new Robot();
+            robot.mousePress(InputEvent.BUTTON1_MASK);
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.setAutoDelay(2000);
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
         } catch (Exception exp) {

@@ -29,13 +29,13 @@ public class AllMerchantsPageTest extends BaseTest {
         homePage.openAllMerchants();
         assertTrue(allMerchantsPage.isVisible());
     }
-    @Test
+ //   @Test
     void createMerchant(){
         AddEditMerchantPage addPage = allMerchantsPage.createMerchant();
         addPage.setID("okkkkkkk");
         System.out.println(">>>>>>>>"+addPage.getID());
     }
-    @Test
+ //   @Test
     void openMerchant(){
         allMerchantsPage.openMerchant("HBM-HKG-17-03-00004 (Pure Green Dance)");
     }

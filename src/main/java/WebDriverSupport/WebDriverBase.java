@@ -4,10 +4,11 @@ import Pages.Login.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.io.*;
 import java.util.Properties;
 
 public class WebDriverBase {
@@ -20,7 +21,7 @@ public class WebDriverBase {
     public static User user;
 
     public enum BROWSER {
-        FIREFOX, CHROME
+        FIREFOX, CHROME, OPERA
     }
 
     private WebDriverBase(){
@@ -30,6 +31,7 @@ public class WebDriverBase {
     private void initializeMembers() {
         try {
             FileInputStream stream = new FileInputStream(new File(PROPERTIES_FILE));
+            //InputStream stream = getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE);
             Properties properties = new Properties();
             properties.load(stream);
             this.URL = properties.getProperty("URL");
@@ -70,9 +72,14 @@ public class WebDriverBase {
                 webDriver = new FirefoxDriver();
                 webDriver.get(URL);
                 break;
+            case OPERA:
+                System.setProperty("webdriver.opera.driver","./driver/operadriver");
+                System.setProperty("opera.binary","./driver/operadriver");
+                webDriver = new OperaDriver();
+                webDriver.get(URL);
+                break;
         }
     }
-
     public void close(){
         if(webDriver != null) {
             webDriver.close();

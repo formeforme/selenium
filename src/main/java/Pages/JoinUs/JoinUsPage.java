@@ -33,7 +33,7 @@ public class JoinUsPage extends State {
     }
     public boolean searchOrganization(String name){
         isElementPresent(searchField);
-        searchField.sendKeys(name);
+        searchField.sendKeys(String.valueOf(name));
         searchButton.click();
         for(WebElement org : orgList){
             if(org.getText().equals(name)){

@@ -10,12 +10,10 @@ import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-/**
- * Created by liana on 4/14/17.
- */
 public class AddEditHBBusinessPage extends State {
     @FindBy(xpath = AddEditHBBusinessPageConst.NAME_FIELD)
     private WebElement nameField;
@@ -41,7 +39,7 @@ public class AddEditHBBusinessPage extends State {
         saveChanges();
     }
     public void setName(String name){
-        nameField.sendKeys(name);
+        nameField.sendKeys(String.valueOf(name));
     }
     public void setImage(String image) {
         imageField.click();
@@ -72,12 +70,15 @@ public class AddEditHBBusinessPage extends State {
             StringSelection stringSelection = new StringSelection(fileLocation);
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
             Robot robot = new Robot();
+            robot.mousePress(InputEvent.BUTTON1_MASK);
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.setAutoDelay(2000);
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
+
         } catch (Exception exp) {
             exp.printStackTrace();
         }

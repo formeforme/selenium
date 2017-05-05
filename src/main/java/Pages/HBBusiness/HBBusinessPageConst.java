@@ -1,8 +1,5 @@
 package Pages.HBBusiness;
 
-/**
- * Created by liana on 4/14/17.
- */
 public class HBBusinessPageConst {
     public static final String ADD_BUTTON = "//a[contains(@href,'addHbBusiness')]";
     public static final String SEARCH_FIELD = "//input[@name='data[HBBusiness][search]']";

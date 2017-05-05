@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.LinkedList;
@@ -41,7 +42,7 @@ public class ScratchAndWinPage extends State {
 
     public void setPrice(String price){
         clearPriceField();
-        priceField.sendKeys(price);
+        priceField.sendKeys(String.valueOf(price));
     }
     public String getPrice(){
         return priceField.getAttribute("value");
@@ -66,7 +67,6 @@ public class ScratchAndWinPage extends State {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //isElementPresent(imageRemoveButton);
     }
     public List<String> getImages(){
         List<String> lst = new LinkedList<String>();
@@ -91,12 +91,13 @@ public class ScratchAndWinPage extends State {
         try {
             StringSelection stringSelection = new StringSelection(fileLocation);
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-            // setClipboardData(fileLocation);
             Robot robot = new Robot();
+            robot.mousePress(InputEvent.BUTTON1_MASK);
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.setAutoDelay(2000);
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
         } catch (Exception exp) {

@@ -3,30 +3,15 @@
 <suite configfailurepolicy="continue" guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [QE ACA First Suite]">
   <test name="Test(failed)">
     <classes>
-      <class name="Test.CharitiesTest.CharitiesPageTest">
+      <class name="Test.FirstPage.FirstPageTest">
         <methods>
-          <include name="validateCreateWorks"/>
-          <include name="validateRightTitle"/>
-          <include name="validateDeleteWorks"/>
-          <include name="start"/>
+          <include name="validateCorrectPage"/>
+          <include name="beforeMethod"/>
+          <include name="cleanUp"/>
           <include name="finish"/>
-          <include name="validateEditWorks"/>
-          <include name="prepare"/>
-          <include name="validateSearchWorks"/>
-          <include name="validateOpenWorks"/>
-          <include name="validateRightEditPageOpened"/>
+          <include name="checkTitle"/>
         </methods>
-      </class> <!-- Test.CharitiesTest.CharitiesPageTest -->
-      <class name="Test.ScratchAndWinTest.ScratchAndWinPageTest">
-        <methods>
-          <include name="createScratchAndWin"/>
-          <include name="validatePriceFieldIsNotEmpty"/>
-          <include name="start"/>
-          <include name="finish"/>
-          <include name="prepare"/>
-          <include name="validateImageFieldIsNotEmpty"/>
-        </methods>
-      </class> <!-- Test.ScratchAndWinTest.ScratchAndWinPageTest -->
+      </class> <!-- Test.FirstPage.FirstPageTest -->
       <class name="Test.HomePage.HomePageTest">
         <methods>
           <include name="validateLogoutWorks"/>
@@ -41,67 +26,6 @@
       </class> <!-- Test.HomePage.HomePageTest -->
     </classes>
   </test> <!-- Test(failed) -->
-  <test name="Test2(failed)">
-    <classes>
-      <class name="Test.HBBusinessTest.HBBusinessPageTest">
-        <methods>
-          <include name="validateCreateWorks"/>
-          <include name="validateEditWorks"/>
-          <include name="validateImageFieldIsNotEmpty"/>
-          <include name="validateDeleteWorks"/>
-          <include name="validateOpenWorks"/>
-          <include name="start"/>
-          <include name="finish"/>
-          <include name="validateNameFieldIsNotEmpty"/>
-          <include name="validateSearchWorks"/>
-          <include name="prepare"/>
-          <include name="validateRightEditPageOpened"/>
-        </methods>
-      </class> <!-- Test.HBBusinessTest.HBBusinessPageTest -->
-      <class name="Test.CategoriesTest.CategoriesPageTest">
-        <methods>
-          <include name="validateDeleteWorks"/>
-          <include name="validateAddWorks"/>
-          <include name="validateOpenWorks"/>
-          <include name="validateEditWorks"/>
-          <include name="start"/>
-          <include name="finish"/>
-          <include name="validateSearchWorks"/>
-          <include name="validateRightEditPageOpened"/>
-          <include name="prepare"/>
-        </methods>
-      </class> <!-- Test.CategoriesTest.CategoriesPageTest -->
-    </classes>
-  </test> <!-- Test2(failed) -->
-  <test name="Test3(failed)">
-    <classes>
-      <class name="Test.SubCategoriesTest.SubCategoryPageTest">
-        <methods>
-          <include name="deleteSubCategory"/>
-          <include name="validateRightEditSubCategoryPage"/>
-          <include name="start"/>
-          <include name="finish"/>
-          <include name="prepare"/>
-          <include name="addSubCategory"/>
-          <include name="editSubCategory"/>
-        </methods>
-      </class> <!-- Test.SubCategoriesTest.SubCategoryPageTest -->
-      <class name="Test.JoinUs.JoinUsTest">
-        <methods>
-          <include name="validateAddWorks"/>
-          <include name="validateOpenWorks"/>
-          <include name="validateDeleteWorks"/>
-          <include name="validateEditWorks"/>
-          <include name="start"/>
-          <include name="finish"/>
-          <include name="prepare"/>
-          <include name="validateRightTitle"/>
-          <include name="validateSearchWorks"/>
-          <include name="validateRightEditPageOpened"/>
-        </methods>
-      </class> <!-- Test.JoinUs.JoinUsTest -->
-    </classes>
-  </test> <!-- Test3(failed) -->
   <test name="Test4(failed)">
     <classes>
       <class name="Test.LoginTest.LoginPageTest">

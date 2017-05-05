@@ -1,8 +1,6 @@
 package Pages.HBBusiness;
 
-/**
- * Created by liana on 4/14/17.
- */
+
 public class AddEditHBBusinessPageConst {
     public static final String NAME_FIELD = "//input[@name='data[HBBusiness][text]']";
     public static final String IMAGE_FIELD = "//div[@id='HB']";

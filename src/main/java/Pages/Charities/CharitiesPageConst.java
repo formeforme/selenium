@@ -1,8 +1,6 @@
 package Pages.Charities;
 
-/**
- * Created by liana on 4/23/17.
- */
+
 public class CharitiesPageConst {
     public static final String TITLE = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/div[1]/h3";
     public static final String ORGANIZATIONS = "//a[contains(@href,'viewCharity')]";

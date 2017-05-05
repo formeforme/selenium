@@ -53,7 +53,7 @@ public class HBBusinessPage extends State {
     }
     public boolean searchHBBusiness(String name){
         isElementPresent(searchField);
-        searchField.sendKeys(name);
+        searchField.sendKeys(String.valueOf(name));
         searchButton.click();
         for(WebElement item : items){
             if(item.getText().equals(name)){

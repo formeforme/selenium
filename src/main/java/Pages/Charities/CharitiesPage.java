@@ -60,7 +60,7 @@ public class CharitiesPage extends State {
     }
     public boolean searchCharity(String name){
         isElementPresent(searchField);
-        searchField.sendKeys(name);
+        searchField.sendKeys(String.valueOf(name));
         searchButton.click();
         for(WebElement org : organizations){
             if(org.getText().equals(name)){

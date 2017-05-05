@@ -37,7 +37,7 @@ public class CategoriesPage extends State {
     }
     public boolean searchCategory(String name){
         isElementPresent(searchField);
-        searchField.sendKeys(name);
+        searchField.sendKeys(String.valueOf(name));
         searchButton.click();
         for(WebElement category : categories){
             if(category.getText().equals(name)){

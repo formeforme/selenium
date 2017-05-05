@@ -1,10 +1,5 @@
 package Pages.Categories;
 
-import java.util.List;
-
-/**
- * Created by liana on 4/12/17.
- */
 public class Category {
     private String name;
     private String type;

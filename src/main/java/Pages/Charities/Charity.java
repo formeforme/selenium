@@ -1,8 +1,6 @@
 package Pages.Charities;
 
-/**
- * Created by liana on 4/23/17.
- */
+
 public class Charity {
     private String name;
     private String email;

@@ -1,8 +1,6 @@
 package Pages.HBBusiness;
 
-/**
- * Created by liana on 4/14/17.
- */
+
 public class HBBusiness {
     private String name;
     private String image;

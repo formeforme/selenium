@@ -1,6 +1,6 @@
 package Pages.Charities;
 
-import Pages.HBBusiness.CategoryPageConst;
+
 import Pages.State;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,9 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-/**
- * Created by liana on 4/23/17.
- */
+
 public class CharityPage extends State {
     @FindBy(how = How.XPATH, using = CharityPageConst.TITLE)
     private WebElement title;

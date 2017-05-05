@@ -1,4 +1,248 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.152 sec - in TestSuite
+Tests run: 25, Failures: 19, Errors: 0, Skipped: 6, Time elapsed: 2.158 sec <<< FAILURE! - in TestSuite
+beforeMethod(Test.FirstPage.FirstPageTest)  Time elapsed: 1.458 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 19 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+	at Test.FirstPage.FirstPageTest.initializeMembers(FirstPageTest.java:37)
+	at Test.FirstPage.FirstPageTest.beforeMethod(FirstPageTest.java:24)
+
+validateCorrectPage(Test.FirstPage.FirstPageTest)  Time elapsed: 0.03 sec  <<< FAILURE!
+java.lang.AssertionError: expected [true] but found [false]
+	at Test.FirstPage.FirstPageTest.validateCorrectPage(FirstPageTest.java:48)
+
+cleanUp(Test.FirstPage.FirstPageTest)  Time elapsed: 0.044 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 12 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+	at Test.FirstPage.FirstPageTest.cleanUp(FirstPageTest.java:28)
+
+start(Test.HomePage.HomePageTest)  Time elapsed: 0.086 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 12 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.HomePage.HomePageTest.openPage(HomePageTest.java:27)
+
+start(Test.HomePage.HomePageTest)  Time elapsed: 0.105 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 12 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.HomePage.HomePageTest.openPage(HomePageTest.java:27)
+
+start(Test.HomePage.HomePageTest)  Time elapsed: 0.123 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 12 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.HomePage.HomePageTest.openPage(HomePageTest.java:27)
+
+start(Test.HomePage.HomePageTest)  Time elapsed: 0.143 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 13 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.HomePage.HomePageTest.openPage(HomePageTest.java:27)
+
+start(Test.HomePage.HomePageTest)  Time elapsed: 0.17 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 13 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.HomePage.HomePageTest.openPage(HomePageTest.java:27)
+
+finish(Test.FirstPage.FirstPageTest)  Time elapsed: 0.185 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 11 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+	at Test.FirstPage.FirstPageTest.finish(FirstPageTest.java:32)
+
+validateFieldCheckIsDone(Test.LoginTest.LoginPageTest)  Time elapsed: 0.011 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 9 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.LoginTest.LoginPageTest.validateFieldCheckIsDone(LoginPageTest.java:29)
+
+finish(Test.LoginTest.LoginPageTest)  Time elapsed: 0.019 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 7 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+
+validateFieldCheckIsDone(Test.LoginTest.LoginPageTest)  Time elapsed: 0.01 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 9 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.LoginTest.LoginPageTest.validateFieldCheckIsDone(LoginPageTest.java:29)
+
+finish(Test.LoginTest.LoginPageTest)  Time elapsed: 0.019 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 8 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+
+validateFieldCheckIsDone(Test.LoginTest.LoginPageTest)  Time elapsed: 0.009 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 8 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.LoginTest.LoginPageTest.validateFieldCheckIsDone(LoginPageTest.java:29)
+
+finish(Test.LoginTest.LoginPageTest)  Time elapsed: 0.018 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 8 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+
+validateFieldCheckIsDone(Test.LoginTest.LoginPageTest)  Time elapsed: 0.011 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 8 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.LoginTest.LoginPageTest.validateFieldCheckIsDone(LoginPageTest.java:29)
+
+finish(Test.LoginTest.LoginPageTest)  Time elapsed: 0.027 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 14 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+
+validateLoginWorks(Test.LoginTest.LoginPageTest)  Time elapsed: 0.017 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 14 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+*** Element info: {Using=xpath, value=//input[@name='email']}
+	at Test.LoginTest.LoginPageTest.validateLoginWorks(LoginPageTest.java:24)
+
+finish(Test.LoginTest.LoginPageTest)  Time elapsed: 0.034 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+no such session
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 13 milliseconds
+Build info: version: '3.3.1', revision: '5234b325d5', time: '2017-03-10 09:10:29 +0000'
+System info: host: 'liana-pc', ip: '127.0.1.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.8.0-49-generic', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.opera.OperaDriver
+Capabilities [{message=unknown error: cannot find Opera binary
+  (Driver info: OperaDriver=2.27 (f61056e560d197467fd6d27c7fbd7fea572fe8bd),platform=Linux 4.8.0-49-generic x86_64), platform=ANY}]
+Session ID: df8495f8d5a5281fe3d2cefd9cb5ed7c
+
