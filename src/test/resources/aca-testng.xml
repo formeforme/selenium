@@ -8,20 +8,20 @@
       <class name="Test.BaseTest.BaseTest"/>
       <class name="Test.FirstPage.FirstPageTest" />
 
-      <class name="Test.HomePage.HomePageTest" />
-      <!--class name="Test.CharitiesTest.CharitiesPageTest" />
+      <!--class name="Test.HomePage.HomePageTest" />
+      <class name="Test.CharitiesTest.CharitiesPageTest" />
       <class name="Test.ScratchAndWinTest.ScratchAndWinPageTest"/>
     </classes>
   </test>
   <test name="Test2" preserve-order="true">
     <classes>
       <class name="Test.CategoriesTest.CategoriesPageTest" />
-      <class name="Test.HBBusinessTest.HBBusinessPageTest"/-->
+      <class name="Test.HBBusinessTest.HBBusinessPageTest"/>
     </classes>
   </test>
   <test name="Test3" preserve-order="true">
     <classes>
-      <!--class name="Test.SubCategoriesTest.SubCategoryPageTest"/>
+      <class name="Test.SubCategoriesTest.SubCategoryPageTest"/>
       <class name="Test.JoinUs.JoinUsTest"/-->
     </classes>
   </test>
